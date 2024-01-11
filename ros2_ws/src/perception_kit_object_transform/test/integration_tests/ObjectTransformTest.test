@@ -1,0 +1,23 @@
+<launch>
+
+  <arg name="test_name" />
+
+  <arg name="skip" default=""/>
+  <arg name="skip_arg" default="$(eval '--skip' if (skip == True) else '')"/>
+
+  <arg name="time_limit" default="300" />
+  <arg name="launch_prefix" value="" />
+
+  <env name="ROSCONSOLE_CONFIG_FILE" value="$(find perception_kit_object_transform)/test/integration_tests/config/rosconsole.conf"/>
+  <env name="ROSCONSOLE_FORMAT"      value="${message} | [${logger}][${node}] ${file} ${line}" />
+
+   <node pkg="tf" type="static_transform_publisher" name="odom_to_base_link" args="10 20 0 0 0 0 /odom /base_link 100"/>
+
+  <!-- Unit under test -->
+  <include file="$(find perception_kit_object_transform)/launch/object_transform.launch" >
+    <arg name="config_file" value="$(find perception_kit_object_transform)/config/object_transform_example.yaml" />
+  </include>
+
+  <test test-name="$(arg test_name)" type="output_validation.py" pkg="perception_kit_object_transform"
+        args="$(arg test_name) $(arg skip_arg)" time-limit="$(arg time_limit)"/>
+</launch>

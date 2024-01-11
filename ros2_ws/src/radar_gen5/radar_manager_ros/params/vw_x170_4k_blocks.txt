@@ -1,0 +1,15 @@
+# messages for radar road signature
+# only take the first 4002 entries of the "payload" array
+# Signal: _g_Rrs_PerSppRrs_PerSppRrsRunnable_m_bap_response_port_out_local.TChangeableMemPool._._._m_arrayPool._1_._elem._m_payload._m_value._0_
+#
+# format:
+# <name> <address> <size> <diagnostic_active> <required_num_nonzero> <filter_duplication>
+# name:                   signal name (String)
+# address:                start address of this signal (Hex)
+# size:                   size of this message (Hex)
+# diagnostic_active:      switch on/off diagnostic updater on this message (Bool)
+# required_num_nonzero:   minimum required non zero bytes in message (Decimal)
+# filter_duplication:     Turn on to filter consecutive duplicate messages (Bool)
+#
+
+_mempool_g_PerSppRrsRunnable_m_bap_response_port_out 0xB009656E 0xFA2 true 10 false

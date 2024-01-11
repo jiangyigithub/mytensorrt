@@ -1,0 +1,26 @@
+#Revision and Compiletime are checked against radar ECU to confirm correct software. Use '=' after keyword. Whitespaces count. Do not put whitespace after the "=" or after the string sequence!!!
+#The strings in the software to compare to the Revision and CompileTime strings below will automatically take the size of the strings below.
+# Start of string addresses are not always the same. This must be looked up! (If \n is read, string in ECU will not display in error message)
+
+SW_Version_string=undefined
+Build_Info_string=undefined
+
+
+# 0xB002AD70 Start address of the LocationInterface
+#   First signal should be "_g_DspRunnable_dsp_m_LocationInterface_out_local.TMemPool._._"
+#   The first members of the LocationList that are needed are "m_referenceCounter" and "m_sequenceNumber"
+#
+# 0xB002D64C End address of the LocationInterface
+#   The signal at this address should be "_g_DspRunnable_dsp_m_LocationInterface_out_local._m_memPoolId"
+#
+# 0x28DC Size of the LocationInterface
+#   = sizeof(Dsp::LocationInterface) = sizeof(location)*num_loc + sizeof(sensingStateData) + some counters
+#   B002AD70 + 28DC = B002D64C
+
+
+_mempool_dspRunnable_m_dspLocationList_out	0xB002AD70 0x28DC
+
+
+# messages for radar road signature
+# only take the first 4002 entries of the "payload" array
+_mempool_g_PerSppRrsRunnable_m_bap_response_port_out 0xB0068A8E 0xFA2

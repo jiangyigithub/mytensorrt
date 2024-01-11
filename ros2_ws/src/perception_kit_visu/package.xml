@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>perception_kit_visu</name>
+  <version>1.0.0</version>
+  <description>RViz plugins for visualization of perception_kit_msgs</description>
+
+  <maintainer email="Tobias.Baer3@de.bosch.com">Tobias Baer</maintainer>
+  <maintainer email="dennis.nienhueser@de.bosch.com">Dennis Nienhüser</maintainer>
+
+  <license>BIOS v4</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <!--build_depend>qtbase5-dev</build_depend-->
+  <!--exec_depend>libqt5-widgets</exec_depend-->
+  <depend>rviz_common</depend>
+  <depend>rviz_default_plugins</depend>
+  <depend>rviz</depend>
+  <depend>visualization_msgs</depend>
+  <depend>perception_kit_msgs</depend>
+  <depend>rqt_gui</depend> <!-- ? -->
+  <depend>rqt_gui_cpp</depend> <!-- ? -->
+  <!--test_depend>rosunit</test_depend-->
+
+  <export>
+    <rviz plugin="${prefix}/plugin_description.xml"/>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

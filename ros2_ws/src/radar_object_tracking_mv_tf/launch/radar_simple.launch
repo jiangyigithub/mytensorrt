@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="site"                default="rng_campus"/> <!-- rng_campus, sgp_cetran, sgp_psa -->
+  <arg name="vehicle"                default="renna"/> <!-- rng_campus, sgp_cetran, sgp_psa -->
+  <rosparam command="load" file="$(find slam_control)/config/sites/$(arg site).yaml" />
+  <param name="/map/origin/yaw" value="0.0"/>
+
+  <param name="use_sim_time" value="true" />
+  
+  <!-- Map for mapfilter  -->
+  <param name="/driving/map_file" value="$(find layered_maps)/$(arg site)/$(arg site).osm"/>
+
+  <!-- Radar -->
+  <group ns="sensor/radar_gen5">     
+    <!-- general settings -->
+    <arg name="debug" default="false"/>
+    <arg name="launch_param" value="gdb -ex run --args" if="$(arg debug)"/>
+    <arg name="launch_param" value="" unless="$(arg debug)"/>
+
+    <!-- radar manager -->
+    <remap from="radar_locations_decoder_gen5/RadarOutputROB2" to="radar_manager_gen5/RadarOutputROB2"/>
+    <remap from="radar_objects_decoder_gen5/RadarOutputROB2" to="radar_manager_gen5/RadarOutputROB2"/>
+
+    <!-- Radar locations decoder -->
+    <arg name="radar_locations_decoder_params" default="$(find radar_locations_decoder_gen5_ros)/params/radar_locations_decoder_shuttle_params.yaml" />
+
+    <node name="radar_locations_decoder_gen5" pkg="radar_locations_decoder_gen5_ros" type="radar_locations_decoder_gen5_ros" output="screen">
+     <rosparam command="load" file="$(arg radar_locations_decoder_params)"/>
+     <remap from="RadarOutputROB2" to="sensor/radar_gen5/radar_manager_gen5/RadarOutputROB2"/>
+    </node>
+  </group>
+
+  <!-- Radar Object Tracker -->
+  <include file="$(find radar_object_tracking)/launch/radar_object_tracking_fused_rs.launch">
+    <arg name="map_file" value="$(find layered_maps)/$(arg site)/$(arg site).osm" />
+  </include>
+
+  <!-- play rosbag -->
+  <node pkg="rosbag" type="play" name="playback" required="true" args="--clock $(arg bag)" />
+
+</launch>

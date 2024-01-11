@@ -1,0 +1,13 @@
+# Radar configuration
+%YAML 1.2
+---
+devices:
+   radar_gen5_rear_left:
+      device_type        : !!str "radar_gen5_plus"
+      device_position    : !!str "radar_gen5_rear_left"
+      sw_revision        : !!str "D161"
+      ip_address         : !!str "192.168.0.2"
+      port               : !!int "5555"
+      daq_list_config    : !!str "daq_list_shuttle_rc18091.txt"
+      max_daq_list       : !!int "0xff"
+      max_odt_entry_size : !!int "0xf6"

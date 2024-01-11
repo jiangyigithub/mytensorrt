@@ -1,0 +1,94 @@
+<robot name="szh_vvr_03_03_2020">
+ 
+<link name="layered_map_enu">
+  <inertial>
+    <mass value="1"/>
+    <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </inertial>
+</link>
+
+<joint name="base_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0 0 0"/>
+  <parent link="layered_map_enu"/>
+  <child link="base_link"/>
+</joint>
+<link name="base_link"/>
+
+<joint name="reference_point_joint" type="fixed">
+  <origin rpy="0 0 -3.3341845062555555555555555555556" xyz="0 0 0"/>
+  <parent link="reference_point"/>
+  <child link="layered_map_enu"/>
+</joint>
+<link name="reference_point"/>
+
+<joint name="camera_01_01_joint" type="fixed">
+  <origin rpy=" -1.57 0 1.57 " xyz="  47.2 -46.9 6.6 "/>   
+  <parent link="reference_point"/>
+  <child link="camera_01_01"/>
+</joint>
+<link name="camera_01_01"/>
+
+<joint name="camera_02_01_joint" type="fixed">
+  <origin rpy=" -1.57 0 0 " xyz="  6.5 -61.5 6.6 "/>   
+  <parent link="reference_point"/>
+  <child link="camera_02_01"/>
+</joint>
+<link name="camera_02_01"/>
+
+
+<joint name="camera_03_01_joint" type="fixed">
+  <origin rpy=" -1.57 0 -1.57 " xyz="  -14 -17.5 6.6 "/>   
+  <parent link="reference_point"/>
+  <child link="camera_03_01"/>
+</joint>
+<link name="camera_03_01"/>
+
+<joint name="camera_04_01_joint" type="fixed">
+  <origin rpy=" -1.57 0 -3.14 " xyz="  26.7 2.3 6.6 "/>   
+  <parent link="reference_point"/>
+  <child link="camera_04_01"/>
+</joint>
+<link name="camera_04_01"/>
+
+
+
+<joint name="radar_01_01_joint" type="fixed">
+  <origin rpy="0 0 3.14" xyz="47.2 -45.9 6.6"/>
+  <parent link="reference_point"/>
+  <child link="radar_01_01"/>
+</joint>
+<link name="radar_01_01"/>
+
+<joint name="radar_02_01_joint" type="fixed">
+  <origin rpy="0 0 1.57 " xyz="7 -61.5 6.6"/>
+  <parent link="reference_point"/>
+  <child link="radar_02_01"/>
+</joint>
+<link name="radar_02_01"/>
+
+<joint name="radar_03_01_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="-14 -18.1 6.6"/>
+  <parent link="reference_point"/>
+  <child link="radar_03_01"/>
+</joint>
+<link name="radar_03_01"/>
+
+<joint name="radar_04_01_joint" type="fixed">
+  <origin rpy="0 0 -1.57" xyz="26 2.3 6.6"/>
+  <parent link="reference_point"/>
+  <child link="radar_04_01"/>
+</joint>
+<link name="radar_04_01"/>
+
+
+<!-- <joint name="radar_gen5_plus_front_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="-19.30550193786621 3.7503113651275636 6.660599708557129"/> 0.174
+  <parent link="reference_point"/>
+  <child link="radar_gen5_plus_front"/>
+</joint>
+<link name="radar_gen5_plus_front"/> -->
+
+
+
+</robot>

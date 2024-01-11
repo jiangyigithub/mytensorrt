@@ -1,0 +1,8 @@
+- id: track lifetime test 1
+  bag_filename: /srv/shuttle/2019-07-05_16-11-13_Gate_3_in_Turning_left._With_traffic._Late_detection./Gate_3_in_Turning_left._With_traffic._Late_detection._raw_2019-07-05_16-11-13.bag
+  obj_pexist_thresh: 0.0
+  expected_lifetime: 0.5
+  long_track_lifetime_thresh: 5.0
+  expected_long_track_lifetime: 15.0
+  expected_short_tracks_count: 450
+

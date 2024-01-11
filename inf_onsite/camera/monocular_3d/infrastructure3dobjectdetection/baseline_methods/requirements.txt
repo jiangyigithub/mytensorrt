@@ -1,0 +1,8 @@
+fire
+numba
+opencv-python
+progress
+pyyaml
+scikit-image
+tensorboardx
+tqdm

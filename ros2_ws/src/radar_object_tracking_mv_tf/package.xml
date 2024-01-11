@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<package format="2">
+	<buildtool_depend>
+		ament_cmake
+	</buildtool_depend>
+	<depend>
+		pcl 1.8
+	</depend>
+	<depend>
+		perception_kit_msgs
+	</depend>
+	<depend>
+		radar_gen5_msgs
+	</depend>
+	<depend>
+		rclcpp
+	</depend>
+	<depend>
+		std_msgs
+	</depend>
+	<depend>
+		tf2_ros
+	</depend>
+	<description>
+		The radar_object_tracking package
+	</description>
+	<export>
+		<build_type>
+			ament_cmake
+		</build_type>
+	</export>
+	<license>
+		BIOS v4
+	</license>
+	<maintainer email="joachim.boerger@de.bosch.com">
+		Joachim Börger
+	</maintainer>
+	<maintainer email="Koba.Natroshvili@de.bosch.com">
+		Koba Natroshvili
+	</maintainer>
+	<maintainer email="michael.ulrich@de.bosch.com">
+		Michael Ulrich
+	</maintainer>
+	<maintainer email="icv@todo.todo">
+		icv
+	</maintainer>
+	<name>
+		radar_object_tracking_mv_tf
+	</name>
+	<test_depend>
+		ament_lint_auto
+	</test_depend>
+	<test_depend>
+		ament_lint_common
+	</test_depend>
+	<version>
+		1.0.0
+	</version>
+</package>

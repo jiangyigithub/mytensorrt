@@ -1,0 +1,82 @@
+/**:
+  ros__parameters:
+    weights:
+        camera_01_01:
+            dynamics: 0.01
+            dimension: 0.99
+            existence_probability: 0.5
+            orientation: 0.1
+            classification: 0.9
+            position:
+                polygon_0:
+                    # wkt: "POLYGON((-100 -30, -100 10, 30 10, 30 -30))"
+                    value: 0.9
+                default:  0.8
+                publish_marker: True
+            
+        camera_02_01:
+            dynamics: 0.01
+            dimension: 0.99
+            existence_probability: 0.5
+            orientation: 0.1
+            classification: 0.9
+            position:
+                polygon_0:
+                    # wkt: "POLYGON((-100 -30, -100 10, 30 10, 30 -30))"
+                    value: 0.9
+                default:  0.8
+                publish_marker: True
+
+        camera_02_02:
+            dynamics: 0.01
+            dimension: 0.99
+            existence_probability: 0.5
+            orientation: 0.1
+            classification: 0.9
+            position:
+                polygon_0:
+                    # wkt: "POLYGON((-100 -30, -100 10, 30 10, 30 -30))"
+                    value: 0.9
+                default:  0.8
+                publish_marker: True
+
+        radar_01_01:
+            dynamics: 0.99
+            dimension: 0.01
+            existence_probability: 0.5
+            orientation: 0.9
+            classification: 0.1
+            position:
+                polygon_0:
+                    # wkt: "POLYGON((-100 -30, -100 10, 30 10, 30 -30))"
+                    value: 0.1
+                default:  0.2
+                publish_marker: True
+            
+        radar_02_01:
+            dynamics: 0.99
+            dimension: 0.01
+            existence_probability: 0.5
+            orientation: 0.9
+            classification: 0.1
+            position:
+                polygon_0:
+                    # wkt: "POLYGON((-100 -30, -100 10, 30 10, 30 -30))"
+                    value: 0.1
+                default:  0.2
+                publish_marker: True
+
+        radar_02_02:
+            dynamics: 0.99
+            dimension: 0.01
+            existence_probability: 0.5
+            orientation: 0.9
+            classification: 0.1
+            position:
+                polygon_0:
+                    # wkt: "POLYGON((-100 -30, -100 10, 30 10, 30 -30))"
+                    value: 0.1
+                default:  0.2
+                publish_marker: True
+
+    weights_frame: "layered_map_enu"

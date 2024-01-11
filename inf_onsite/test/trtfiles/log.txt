@@ -1,0 +1,84 @@
+[06/13/2023-11:04:12] [TRT] [I] Loaded engine size: 39 MiB
+[06/13/2023-11:04:12] [TRT] [I] [MemUsageChange] TensorRT-managed allocation in engine deserialization: CPU +0, GPU +37, now: CPU 0, GPU 37 (MiB)
+/home/icv/Edward/inf_sense/src/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_inference.py:74: DeprecationWarning: Use get_tensor_mode instead.
+  is_input = engine.binding_is_input(idx)
+/home/icv/Edward/inf_sense/src/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_inference.py:75: DeprecationWarning: Use get_tensor_name instead.
+  name = engine.get_binding_name(idx)
+/home/icv/Edward/inf_sense/src/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_inference.py:76: DeprecationWarning: Use get_tensor_dtype instead.
+  op_type = engine.get_binding_dtype(idx)
+/home/icv/Edward/inf_sense/src/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_inference.py:77: DeprecationWarning: Use get_tensor_shape instead.
+  shape = engine.get_binding_shape(idx)
+input id: 0  is input:  True  binding name: input  shape: (1, 3, 1080, 1920) type:  DataType.FLOAT
+input id: 1  is input:  False  binding name: output  shape: (1, 10, 270, 480) type:  DataType.FLOAT
+input id: 2  is input:  False  binding name: 539  shape: (1, 2, 270, 480) type:  DataType.FLOAT
+input id: 3  is input:  False  binding name: 542  shape: (1, 2, 270, 480) type:  DataType.FLOAT
+input id: 4  is input:  False  binding name: 545  shape: (1, 2, 270, 480) type:  DataType.FLOAT
+input id: 5  is input:  False  binding name: 548  shape: (1, 2, 270, 480) type:  DataType.FLOAT
+input id: 6  is input:  False  binding name: 551  shape: (1, 3, 270, 480) type:  DataType.FLOAT
+input id: 7  is input:  False  binding name: 554  shape: (1, 24, 270, 480) type:  DataType.FLOAT
+input id: 8  is input:  False  binding name: 557  shape: (1, 16, 270, 480) type:  DataType.FLOAT
+input id: 9  is input:  False  binding name: 560  shape: (1, 8, 270, 480) type:  DataType.FLOAT
+input id: 10  is input:  False  binding name: 563  shape: (1, 2, 270, 480) type:  DataType.FLOAT
+[06/13/2023-11:04:12] [TRT] [I] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +222, now: CPU 0, GPU 259 (MiB)
+[06/13/2023-11:04:12] [TRT] [W] CUDA lazy loading is not enabled. Enabling it can significantly reduce device memory usage and speed up TensorRT initialization. See "Lazy Loading" section of CUDA documentation https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#lazy-loading
+/home/icv/Edward/inf_sense/src/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_inference.py:47: DeprecationWarning: Use get_tensor_name instead.
+  idx = self.engine.get_binding_index(output_name)
+/home/icv/Edward/inf_sense/src/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_inference.py:48: DeprecationWarning: Use get_tensor_dtype instead.
+  dtype = torch_dtype_from_trt(self.engine.get_binding_dtype(idx))
+/home/icv/Edward/inf_sense/src/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_inference.py:49: DeprecationWarning: Use get_tensor_shape instead.
+  shape = tuple(self.engine.get_binding_shape(idx))
+/home/icv/Edward/inf_sense/src/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_inference.py:50: DeprecationWarning: Use get_tensor_location instead.
+  device = torch_device_from_trt(self.engine.get_location(idx))
+/home/icv/Edward/inf_sense/src/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_inference.py:56: DeprecationWarning: Use get_tensor_name instead.
+  idx = self.engine.get_binding_index(input_name)
+[06/13/2023-11:04:14] [TRT] [E] 3: [executionContext.cpp::enqueueInternal::795] Error Code 3: API Usage Error (Parameter check failed at: runtime/api/executionContext.cpp::enqueueInternal::795, condition: bindings[x] || nullBindingOK
+)
+tensor([[[[0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          ...,
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.]],
+
+         [[0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          ...,
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.]],
+
+         [[0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          ...,
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.]],
+
+         ...,
+
+         [[0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          ...,
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.]],
+
+         [[0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          ...,
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.]],
+
+         [[0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          ...,
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.],
+          [0., 0., 0.,  ..., 0., 0., 0.]]]], device='cuda:0')

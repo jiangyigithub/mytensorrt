@@ -1,0 +1,46 @@
+#
+# format:
+# <name> <address> <size> <diagnostic_active> <required_num_nonzero> <filter_duplication>
+# name:                   signal name (String)
+# address:                start address of this signal (Hex)
+# size:                   size of this message (Hex)
+# diagnostic_active:      switch on/off diagnostic updater on this message (Bool)
+# required_num_nonzero:   minimum required non zero bytes in message (Decimal)
+# filter_duplication:     Turn on to filter consecutive duplicate messages (Bool)
+#
+# timestamp of odometry data (vfc::uint32_t) in normalized Units [s], Norm: (Norm_tAbsUL_ul)
+# Signal: _g_PerEnvM_EnvModel_PerSpdRunnable_PerSpdRunnable_m_syncInfoPort_out_local.TChangeableMemPool._._._m_arrayPool._0_._elem._measurementSyncInfos.TList._._m_nodeAlloc._m_memPool._m_storage._m_vals._v1._0_._m_value._m_timeStamp._m_timeStamp
+
+_mempool_odometry_timestamp 0x60015258 0x4 false 0 false
+
+
+# mu odometry vector containing 8 float_32t entries (m_muVector): d_x, d_y, v_x, v_y, a_x, a_y, d_yaw, v_yaw
+# Signal: _g_PerEnvM_EnvModel_PerSpdRunnable_PerSpdRunnable_m_syncInfoPort_out_local.TChangeableMemPool._._._m_arrayPool._0_._elem._measurementSyncInfos.TList._._m_nodeAlloc._m_memPool._m_storage._m_vals._v1._0_._m_value._m_predHvmFor._m_vectorCovariancePair._m_muVector._m_data._m_data._m_value._0_
+
+_mempool_odometry_mu_vector 0x60015264 0x20 true 9 false
+
+
+# odometry variances and covariances:
+# 8 first float32_t entries are variances (m_stdVector)
+# 28 next float32_t entries are covariances (m_corrVector)
+# Signal: _g_PerEnvM_EnvModel_PerSpdRunnable_PerSpdRunnable_m_syncInfoPort_out_local.TChangeableMemPool._._._m_arrayPool._0_._elem._measurementSyncInfos.TList._._m_nodeAlloc._m_memPool._m_storage._m_vals._v1._0_._m_value._m_predHvmFor._m_vectorCovariancePair._m_stdVector._m_data._m_data._m_value._0_
+# all together: 144 bytes
+
+_mempool_odometry_var_covar 0x60015284 0x90 false 0 false
+
+# current estimated mounting pose of radar sensor
+# muVector contains 5 float_32t entries: [Position, Angle] = [x, y, z, yaw, pitch]
+# Signal: _g_PerEnvM_per_sppRLocRunnable_PerSppRLocRunnable_m_radarSensorPropertiesPort_out_local.TChangeableMemPool._._._m_arrayPool._0_._elem._m_currentMounting._m_vectorCovariancePair._m_muVector._m_data._m_data._m_value._0_
+
+_mempool_current_radar_mounting_pose 0x6002D694 0x14 false 0 false
+
+
+# Runtimes of RRS and Per components on the radar for debugging purposes
+# the important entries are:
+# Per runtime at  +0x8 (uint32 in 10 nanoseconds)
+# Per cycle nr at +0xC (uint32)
+# RRS runtime at  +0x48 (uint32 in 10 nanoseconds)
+# RRS cycle nr at +0x4C (uint32)
+# Signal: _g_PERTime
+
+_mempool_component_runtimes 0xB0040800 0x80 false 0 false

@@ -1,0 +1,14 @@
+<launch>
+  <arg name="map_file" />
+
+  <arg name="config_file" default="$(find radar_object_tracking)/config/config.yaml"/>
+
+  <!-- finally our tracker -->
+  <group ns="perception/radar_gen5">
+    <node name="radar_object_tracking_node" pkg="radar_object_tracking" type="radar_object_tracking_node" output="screen" required="true">
+        <param name="map_file" value="$(arg map_file)"/>
+        <rosparam command="load" file="$(arg config_file)"/>
+    </node>
+  </group>
+
+</launch>

@@ -1,0 +1,65 @@
+# Start address of the LocationInterface
+#   _g_Dsp_dsp_dsp_m_LocationInterface_out_local.TChangeableMemPool._._._m_arrayPool._1_._elem B0061658
+#   The first members of the LocationList that are needed are "m_referenceCounter" and "m_sequenceNumber"
+#
+# End address of the LocationInterface
+#   The signal at this address should be "_g_Dsp_dsp_dsp_m_LocationInterface_out_local.TChangeableMemPool._._._m_arrayPool._1_._elem._m_SensState._FieldOfView_st._phiViewAry._10_"
+#
+# Size of the LocationInterface
+#   = sizeof(Dsp::LocationInterface) = sizeof(location)*num_loc + sizeof(sensingStateData) + some counters
+
+
+############################################################
+_mempool_dspRunnable_m_dspLocationList_out	0xB0061658 0x2BA4     
+
+
+# messages for radar road signature
+# only take the first 4002 entries of the "payload" array
+# Signal: _g_Rrs_PerSppRrs_PerSppRrsRunnable_m_bap_response_port_out_local.TChangeableMemPool._._._m_arrayPool._1_._elem._m_payload._m_value._0_
+
+############################################################
+_mempool_g_PerSppRrsRunnable_m_bap_response_port_out 0xB009FA72 0xFA2
+
+
+# timestamp of odometry data (vfc::uint32_t) in normalized Units [s], Norm: (Norm_tAbsUL_ul)
+# Signal: _g_PerEnvM_EnvModel_PerSpdRunnable_PerSpdRunnable_m_syncInfoPort_out_local.TChangeableMemPool._._._m_arrayPool._0_._elem._measurementSyncInfos.TList._._m_nodeAlloc._m_memPool._m_storage._m_vals._v1._0_._m_value._m_timeStamp._m_timeStamp
+
+############################################################
+_mempool_odometry_timestamp 0x60020514 0x4
+
+
+# mu odometry vector containing 8 float_32t entries (m_muVector): d_x, d_y, v_x, v_y, a_x, a_y, d_yaw, v_yaw
+# Signal: _g_PerEnvM_EnvModel_PerSpdRunnable_PerSpdRunnable_m_syncInfoPort_out_local.TChangeableMemPool._._._m_arrayPool._0_._elem._measurementSyncInfos.TList._._m_nodeAlloc._m_memPool._m_storage._m_vals._v1._0_._m_value._m_predHvmFor._m_vectorCovariancePair._m_muVector._m_data._m_data._m_value._0_ 60020520
+
+############################################################
+_mempool_odometry_mu_vector 0x60020520 0x20
+
+
+# odometry variances and covariances:
+# 8 first float32_t entries are variances (m_stdVector)
+# 28 next float32_t entries are covariances (m_corrVector)
+# Signal: _g_PerEnvM_EnvModel_PerSpdRunnable_PerSpdRunnable_m_syncInfoPort_out_local.TChangeableMemPool._._._m_arrayPool._0_._elem._measurementSyncInfos.TList._._m_nodeAlloc._m_memPool._m_storage._m_vals._v1._0_._m_value._m_predHvmFor._m_vectorCovariancePair._m_stdVector._m_data._m_data._m_value._0_
+# all together: 144 bytes
+
+############################################################
+_mempool_odometry_var_covar 0x60020540 0x90
+
+
+# current estimated mounting pose of radar sensor
+# muVector contains 5 float_32t entries: [Position, Angle] = [x, y, z, yaw, pitch]
+# Signal: _g_PerEnvM_per_sppRLocRunnable_PerSppRLocRunnable_m_radarSensorPropertiesPort_out_local.TChangeableMemPool._._._m_arrayPool._0_._elem._m_currentMounting._m_vectorCovariancePair._m_muVector._m_data._m_data._m_value._0_
+
+############################################################
+_mempool_current_radar_mounting_pose 0x6002D098 0x14
+
+
+# Runtimes of RRS and Per components on the radar for debugging purposes
+# the important entries are:
+# Per runtime at  +0x8 (uint32 in 10 nanoseconds)
+# Per cycle nr at +0xC (uint32)
+# RRS runtime at  +0x48 (uint32 in 10 nanoseconds)
+# RRS cycle nr at +0x4C (uint32)
+# Signal: _g_PERTime
+
+############################################################
+_mempool_component_runtimes 0xB0041838 0x80

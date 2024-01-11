@@ -1,0 +1,22 @@
+#Revision and Compiletime are checked against radar ECU to confirm correct software. Use '=' after keyword. Whitespaces count. Do not put whitespace after the "=" or after the string sequence!!!
+#The strings in the software to compare to the Revision and CompileTime strings below will automatically take the size of the strings below.
+# Start of string addresses are not always the same. This must be looked up! (If \n is read, string in ECU will not display in error message)
+
+SW_Version_string=undefined
+Build_Info_string=undefined
+
+# first argument: memory adress of packet
+# second argument: size to be looked up in .a2l / canape as the difference of adress location to the next packet
+#
+# format:
+# <name> <address> <size> <diagnostic_active> <required_num_nonzero> <filter_duplication>
+# name:                   signal name (String)
+# address:                start address of this signal (Hex)
+# size:                   size of this message (Hex)
+# diagnostic_active:      switch on/off diagnostic updater on this message (Bool)
+# required_num_nonzero:   minimum required non zero bytes in message (Decimal)
+# filter_duplication:     Turn on to filter consecutive duplicate messages (Bool)
+#
+
+# Corner 18091
+_g_ENS_R_DspRunnable_DspRunnable_m_LocationInterface_out_local.TMemPool     0xB002874C  0x30F8 false 0 false

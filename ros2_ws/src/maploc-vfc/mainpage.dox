@@ -1,0 +1,31 @@
+/**
+\mainpage
+\htmlinclude manifest.html
+
+Purpose and Mission Statement
+=============================
+
+In General
+----------
+
+The VFC is the basis or the core for implementing image processing or other algorithms, but it is not more. It does not contain any further advanced algorithms. If you are looking for e.g. a special kind of image convolution, segmentation or anything else, you are usually on your own. However, as several developer implement their computer vision algorithms with the VFC it is likely that the algorithm you are searching is already implemented. Thus, please look in the computer vision algorithms directories and its documentation.
+
+The VFC is developed by a standard development process using version control (mks), requirements and change-request management tool (Mantis), doxygen for documentation, and cppunit for unit testing.
+
+Functionality covered by VFC
+----------------------------
+
+The VFC (Vision Foundation Classes) provides the framework for programming computer vision algorithms on different platforms. It consists of classes for basic types, images, linear algebra, numerics and memory handling. Writing your algorithms with the VFC and using its programming style guide, these algorithms should be working on all platforms the VFC supports.
+
+Functionality not covered by VFC
+--------------------------------
+
+As the VFC is only the framework for the programming of algorithms, it does not provide computer vision algorithms.
+
+\section codeapi VFC API
+
+Please use a CHM (Windows compiled help file) viewer do look at the original VFC documentation.  Under Linux, you might want to try chmsee (get it via your favourite package manager, i.e. under Ubuntu "sudo apt-get install chmsee") or any other chm viewer of your choice.
+
+[Please use the original VFC CHM documentation](doc/vfc_dev.chm)
+
+*/

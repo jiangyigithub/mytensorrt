@@ -1,0 +1,7 @@
+- id: road reflex suppression test 1
+  bag_filename: /srv/shuttle/2019-07-11_15-59-04_false_reflex_large_objects_radar/false_reflex_large_objects_radar_raw_2019-07-11_15-59-04.bag
+  free_regions_range: 20
+  expected_fa: 2
+  obj_pexist_thresh: 0.5
+
+

@@ -1,0 +1,11 @@
+<launch>
+<arg name="nodelet_name" default="ObjectTransform" />
+
+<arg name="config_file" default="$(find perception_kit_object_transform)/config/object_transform_example.yaml" />
+  <node pkg="nodelet" type="nodelet" name="$(arg nodelet_name)"  args="manager" output="screen"/>
+
+  <node pkg="nodelet" type="nodelet" name="object_transform_nodelet_$(arg nodelet_name)"
+        args="load perception_kit_object_transform/ObjectTransform $(arg nodelet_name)" output="screen">
+  <rosparam command="load" file="$(arg config_file)" />
+  </node>
+</launch>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<package format="3">
+	<buildtool_depend>
+		ament_cmake
+	</buildtool_depend>
+	<depend>
+		pcl 1.8
+	</depend>
+	<depend>
+		radar_gen5_msgs
+	</depend>
+	<depend>
+		radar_locations_decoder_gen5_ros
+	</depend>
+	<depend>
+		rclcpp
+	</depend>
+	<depend>
+		std_msgs
+	</depend>
+	<description>
+		The radar_locations_to_pointcloud_converter_ros package
+	</description>
+	<export>
+		<!-- Other tools can request additional information be placed here -->
+		<build_type>
+			ament_cmake
+		</build_type>
+	</export>
+	<license>
+		BIOS
+	</license>
+	<maintainer email="vladimir.belyaev@de.bosch.com">
+		PJ-MP
+	</maintainer>
+	<name>
+		radar_locations_to_pointcloud_converter_ros
+	</name>
+	<version>
+		0.0.0
+	</version>
+</package>

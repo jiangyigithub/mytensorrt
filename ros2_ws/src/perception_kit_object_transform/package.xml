@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>perception_kit_object_transform</name>
+  <version>1.0.0</version>
+  <description>Transformation package for perception kit objects</description>
+
+  <maintainer email="TobiasBaer3@de.bosch.com">Tobias Bär</maintainer>
+
+  <license>BIOS v4</license>
+
+  <author email="Tobias.Baer3@de.bosch.com">Tobias Bär</author>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp_components</depend>
+  <depend>rclcpp</depend>
+  <depend>geometry_msgs</depend>
+  <depend>perception_kit_msgs</depend>
+  <depend>tf2_ros</depend>
+
+  <test_depend>rosunit</test_depend> <!-- ROS2? -->
+  <test_depend>rostest</test_depend> <!-- ROS2? -->
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <export>
+    <!--nodelet plugin="${prefix}/perception_kit_object_transform_plugin.xml" /-->
+    <build_type>ament_cmake</build_type>
+  </export>
+
+</package>

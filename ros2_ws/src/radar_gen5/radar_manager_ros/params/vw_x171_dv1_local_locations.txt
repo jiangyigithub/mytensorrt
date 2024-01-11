@@ -1,0 +1,16 @@
+# Start address of the LocationInterface
+#   _g_Dsp_dsp_dsp_m_LocationInterface_out_local.TChangeableMemPool._._._m_arrayPool._1_._elem
+#   The first member of the LocationList that is needed is ".CInternal._._m_referenceCounter"
+#
+#
+# format:
+# <name> <address> <size> <diagnostic_active> <required_num_nonzero> <filter_duplication>
+# name:                   signal name (String)
+# address:                start address of this signal (Hex)
+# size:                   size of this message (Hex)
+# diagnostic_active:      switch on/off diagnostic updater on this message (Bool)
+# required_num_nonzero:   minimum required non zero bytes in message (Decimal)
+# filter_duplication:     Turn on to filter consecutive duplicate messages (Bool)
+#
+
+_mempool_dspRunnable_m_dspLocationList_out	0xB0053348 0x2BA4 true 1 false

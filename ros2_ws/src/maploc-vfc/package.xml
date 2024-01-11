@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<package format="2">
+	<!-- One maintainer tag required, multiple allowed, one person per tag -->
+	<author email="Karsten.Muehlmann@de.bosch.com">
+		Muehlmann Karsten
+	</author>
+	<buildtool_depend>
+		ament_cmake
+	</buildtool_depend>
+	<description>
+		Vision Foundation Classes (VFC) review status: reviewed notes: used in series production of all CC/DA video projects versioncontrol: mks url="muh://d:/MKS_Data/Projects/platform-components/ivs2/appl_sw/versatile/pc_ivs2_vfc/pc_ivs2_vfc.pj" 26.03.18 (leu2abt): vfc extended with one header (include/vfc/extension/vfc_trig_vw_project.hpp) to enable the same behavior as in the radar gen 5 project. 29.10.18 (leu2abt): added floor and ceil functions in math.hpp to enable same behavior as in radar gen5 project.
+	</description>
+	<export>
+		<!-- Other tools can request additional information be placed here -->
+		<build_type condition="$ROS_VERSION == 1">
+			catkin
+		</build_type>
+		<build_type condition="$ROS_VERSION == 2">
+			ament_cmake
+		</build_type>
+	</export>
+	<license>
+		Robert Bosch GmbH INTERNAL
+	</license>
+	<maintainer email="Karsten.Muehlmann@de.bosch.com">
+		Muehlmann Karsten
+	</maintainer>
+	<name>
+		vfc
+	</name>
+	<version>
+		1.26.0
+	</version>
+</package>

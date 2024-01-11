@@ -1,0 +1,43 @@
+/**:
+  ros__parameters:
+
+    inputs:
+      sensor_names: ['camera_01_01', 'camera_02_01', 'camera_02_02', 'radar_01_01',  'radar_02_01', 'radar_02_02']
+      camera_01_01:
+        min_existence_probability: 0.7
+        topic_name: '/perception/camera/camera_01_01/objects_transform'
+      camera_02_01:
+        min_existence_probability: 0.7
+        topic_name: '/perception/camera/camera_02_01/objects_transform'
+      camera_02_02:
+        min_existence_probability: 0.7
+        topic_name: '/perception/camera/camera_02_02/objects_transform'
+      radar_01_01:
+        min_existence_probability: 0.7
+        topic_name: '/perception/radar_01_01/tracks_transform_ros2'
+      radar_02_01:
+        min_existence_probability: 0.7
+        topic_name: '/perception/radar_02_01/tracks_transform_ros2'
+      radar_02_02:
+        min_existence_probability: 0.7
+        topic_name: '/perception/radar_02_02/tracks_transform_ros2'
+
+    operation_frame: 'layered_map_enu'
+
+    euclidean_threshold: 12.0
+
+    max_delay: 250.0
+
+    roi:
+      y_max: 10.0
+      y_min: -50.0
+      x_max: 80.0
+      x_min: -200.0
+
+    output:
+      min_existence_probability: 0.7
+      topic_name: '/perception/fusion/objects_t2t_mii'
+
+    use_sim_time: true
+
+    debug_mode: true

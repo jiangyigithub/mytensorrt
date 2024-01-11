@@ -1,0 +1,165 @@
+<robot name="wuxi_houshan">
+ 
+<link name="layered_map_enu">
+  <inertial>
+    <mass value="1"/>
+    <inertia ixx="100" ixy="0" ixz="0" iyy="100" iyz="0" izz="100" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </inertial>
+</link>
+
+<joint name="base_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0 0 0"/>
+  <parent link="layered_map_enu"/>
+  <child link="base_link"/>
+</joint>
+<link name="base_link"/>
+
+<joint name="map_joint" type="fixed">
+  <origin rpy="0 0 0" xyz="0 0 0"/>
+  <parent link="layered_map_enu"/>
+  <child link="map"/>
+</joint>
+<link name="map"/>
+
+<!-- 0x_01 outer, 0x_02 inner -->
+<!-- east 0101 1.56 -> +0.009 0102 4.28 -> 4.38-->
+<joint name="camera_01_01_joint" type="fixed">
+  <origin rpy=" -1.595934 0.028848 1.571191 " xyz="  64.890434 3.488007 7.425792 "/>
+  <parent link="layered_map_enu"/>
+  <child link="camera_01_01"/>
+</joint>
+<link name="camera_01_01"/>
+
+<joint name="camera_01_02_joint" type="fixed">
+  <origin rpy=" -1.708288 -0.013729 1.475992 " xyz="  64.995094 4.489925 7.293392 "/>
+  <parent link="layered_map_enu"/>
+  <child link="camera_01_02"/>
+</joint>
+<link name="camera_01_02"/>
+
+<!--
+<joint name="radar_01_01_joint" type="fixed">
+  <origin rpy="1.57 -1.57 0" xyz="0 0 -0.15"/>
+  <parent link="camera_01_02"/>
+  <child link="radar_01_01"/>
+</joint>
+<link name="radar_01_01"/>
+-->
+
+<joint name="radar_01_01_joint" type="fixed">
+  <origin rpy="0 0 3.206092" xyz="64.995094 4.689925 7.143392"/>
+  <parent link="layered_map_enu"/>
+  <child link="radar_01_01"/>
+</joint>
+<link name="radar_01_01"/>
+
+<!-- south -->
+<joint name="camera_02_01_joint" type="fixed">
+  <origin rpy=" -1.607945 0.022803 -0.110781 " xyz="  19.353685 -18.269855 6.682325 "/>
+  <parent link="layered_map_enu"/>
+  <child link="camera_02_01"/>
+</joint>
+<link name="camera_02_01"/>
+
+<joint name="camera_02_02_joint" type="fixed">
+  <origin rpy=" -1.740657 0.030855 0.029865 " xyz="  20.169886 -16.505331 6.657059 "/>
+  <parent link="layered_map_enu"/>
+  <child link="camera_02_02"/>
+</joint>
+<link name="camera_02_02"/>
+<!--
+<joint name="radar_02_01_joint" type="fixed">
+  <origin rpy="1.57 -1.57 0" xyz="0 0 -0.15"/>
+  <parent link="camera_02_02"/>
+  <child link="radar_02_01"/>
+</joint>
+<link name="radar_02_01"/>
+-->
+
+<joint name="radar_02_01_joint" type="fixed">
+  <origin rpy="-0.170657 0 1.599865" xyz="19.669886 -16.505331 6.507059"/>
+  <parent link="layered_map_enu"/>
+  <child link="radar_02_01"/>
+</joint>
+<link name="radar_02_01"/>
+
+
+<!-- west -->
+<joint name="camera_03_01_joint" type="fixed">
+  <origin rpy=" -1.609876 0.040083 -1.561281 " xyz="  1.355473 26.056849 7.017407 "/>
+  <parent link="layered_map_enu"/>
+  <child link="camera_03_01"/>
+</joint>
+<link name="camera_03_01"/>
+
+<joint name="camera_03_02_joint" type="fixed">
+  <origin rpy=" -1.760905 0.005668 -1.654892 " xyz="  1.778299 27.741302 6.193670 "/>
+  <parent link="layered_map_enu"/>
+  <child link="camera_03_02"/>
+</joint>
+<link name="camera_03_02"/>
+<!--
+<joint name="radar_03_01_joint" type="fixed">
+  <origin rpy="1.57 -1.57 0" xyz="0 0 -0.15"/>
+  <parent link="camera_03_02"/>
+  <child link="radar_03_01"/>
+</joint>
+<link name="radar_03_01"/>
+-->
+<joint name="radar_03_01_joint" type="fixed">
+  <origin rpy="-0.190905 0 0.005" xyz="1.778299 30.041302 6.043670"/>
+  <parent link="layered_map_enu"/>
+  <child link="radar_03_01"/>
+</joint>
+<link name="radar_03_01"/>
+
+<!-- north -->
+<joint name="camera_04_01_joint" type="fixed">
+  <origin rpy=" -1.582712 0.028009 3.129976 " xyz="  41.208584 45.889793 7.020128 "/>
+  <parent link="layered_map_enu"/>
+  <child link="camera_04_01"/>
+</joint>
+<link name="camera_04_01"/>
+
+<joint name="camera_04_02_joint" type="fixed">
+  <origin rpy=" -1.700962 -0.044051 2.998745 " xyz="  39.937424 45.138000 6.702299 "/>
+  <parent link="layered_map_enu"/>
+  <child link="camera_04_02"/>
+</joint>
+<link name="camera_04_02"/>
+
+<!--
+<joint name="radar_04_01_joint" type="fixed">
+  <origin rpy="1.57 -1.57 0" xyz="0 0 -0.15"/>
+  <parent link="camera_04_02"/>
+  <child link="radar_04_01"/>
+</joint>
+<link name="radar_04_01"/>
+-->
+
+<joint name="radar_04_01_joint" type="fixed">
+  <origin rpy="-0.130962 0 4.608745" xyz="40.537424 45.138000 6.552299"/>
+  <parent link="layered_map_enu"/>
+  <child link="radar_04_01"/>
+</joint>
+<link name="radar_04_01"/>
+
+
+<joint name="lidar_horizon_joint" type="fixed">
+  <origin rpy=" 3.3 0.299 0.035 " xyz="  65.2 5.3 6.9 "/>
+  <parent link="layered_map_enu"/>
+  <child link="horizon_base_frame"/>
+</joint>
+<link name="horizon_base_frame"/>
+
+<joint name="lidar_tele_joint" type="fixed">
+  <origin rpy=" 3.13 -0.003 0.06 " xyz="  65 7 7.4 "/>
+  <parent link="layered_map_enu"/>
+  <child link="lidar_base_frame"/>
+</joint>
+<link name="lidar_base_frame"/>
+
+
+
+</robot>

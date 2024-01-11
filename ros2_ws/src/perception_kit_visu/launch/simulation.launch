@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="object_simulation" pkg="perception_kit_visu" type="perception_kit_visu_object_simulation" output="screen"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find perception_kit_visu)/launch/simulation.rviz"/>
+</launch>

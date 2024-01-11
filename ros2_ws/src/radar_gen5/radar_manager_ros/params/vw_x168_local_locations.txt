@@ -1,0 +1,24 @@
+# Start address of the LocationInterface
+#   _g_Dsp_dsp_dsp_m_LocationInterface_out_local.TChangeableMemPool._._._m_arrayPool._1_._elem B0061658
+#   The first members of the LocationList that are needed are "m_referenceCounter" and "m_sequenceNumber"
+#
+# End address of the LocationInterface
+#   The signal at this address should be "_g_Dsp_dsp_dsp_m_LocationInterface_out_local.TChangeableMemPool._._._m_arrayPool._1_._elem._m_SensState._FieldOfView_st._phiViewAry._10_"
+#
+# Size of the LocationInterface
+#   = sizeof(Dsp::LocationInterface) = sizeof(location)*num_loc + sizeof(sensingStateData) + some counters
+#
+# format:
+# <name> <address> <size> <diagnostic_active> <required_num_nonzero> <filter_duplication>
+# name:                   signal name (String)
+# address:                start address of this signal (Hex)
+# size:                   size of this message (Hex)
+# diagnostic_active:      switch on/off diagnostic updater on this message (Bool)
+# required_num_nonzero:   minimum required non zero bytes in message (Decimal)
+# filter_duplication:     Turn on to filter consecutive duplicate messages (Bool)
+#
+
+_mempool_dspRunnable_m_dspLocationList_out	0xB0061658 0x2BA4 true 1 false
+
+
+

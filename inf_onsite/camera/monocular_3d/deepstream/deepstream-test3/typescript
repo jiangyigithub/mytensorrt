@@ -1,0 +1,975 @@
+Script started on 2023-12-27 12:54:59+08:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="196" LINES="39"]
+]0;icv@icv-desktop: ~/workspaces/inf_onsite/camera/monocular_3d/deepstream/deepstream-test3[01;32micv@icv-desktop[00m:[01;34m~/workspaces/inf_onsite/camera/monocular_3d/deepstream/deepstream-test3[00m$ vlc test_vedio.mp4 [7@sample_1080p_h264[C[C[C[C[Csudo apt-get purge vlc vlc-data vlc-plugin-pulse vlc-nox [31Pvlc sample_1080p_h264.mp4[C[7Ptest_vedio[C[C[C[C[Csudo apt-get install vlc[1Premove[C[C[C[Cpython3.8 ds_3d_det_ros_main.py -i  file:////home/icv/workspaces/wheel/test_vedio.mp4sudo trtexec --onnx=/home/icv/workspaces/inf_onsite/test/onnxfiles/3d_det_all.onnx --saveEngine=/home/icv/workspaces/inf_onsite/test/trtfiles/3d_det_engine_all_orin.trt --noTF32[A]0;icv@icv-desktop: ~/workspaces/inf_onsite/camera/monocular_3d/deepstream/deepstream-test3[01;32micv@icv-desktop[00m:[01;34m~/workspaces/inf_onsite/camera/monocular_3d/deepstream/deepstream-test3[00m$ [22Ppython3.8 ds_3d_det_ros_main.py -i  file:////home/icv/workspaces/wheel/test_vedio.mp4
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1@s[1@c[1@r[1@i[C[1@p[1@t[1@ [1@-[1@c[1@ [1P[1@"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C" lig[K[Kog[K[K[Kds.log
+Script started, file is ds.log
+[37;1m2023-12-27 12:55:49.635 [31;1m[[37;1mSUBSCRIBER[31;1m Error] [37mDeserialization of data failed[34;1m -> Function [36mdeserialize_change[m
+{'input': ['file:////home/icv/workspaces/wheel/test_vedio.mp4'], 'configfile': None, 'pgie': None, 'no_display': False, 'file_loop': False, 'disable_probe': False, 'silent': False}
+Creating Pipeline 
+ 
+Creating streamux 
+ 
+Creating source_bin  0  
+ 
+Creating source bin
+source-bin-00
+Creating Pgie 
+ 
+Creating tiler 
+ 
+Creating nvvidconv 
+ 
+Creating nvosd 
+ 
+Creating nv3dsink 
+
+Adding elements to Pipeline 
+
+Linking elements in the Pipeline 
+
+Now playing...
+0 :  file:////home/icv/workspaces/wheel/test_video.mp4
+Starting pipeline 
+
+WARNING: [TRT]: Using an engine plan file across different models of devices is not recommended and is likely to affect performance or even cause errors.
+0:00:05.207413746 [331m 6546[00m     0x196e4830 [36mINFO   [00m [00m             nvinfer gstnvinfer.cpp:682:gst_nvinfer_logger:<primary-inference>[00m NvDsInferContext[UID 1]: Info from NvDsInferContextImpl::deserializeEngineAndBackend() <nvdsinfer_context_impl.cpp:1988> [UID = 1]: deserialized trt engine from :/home/icv/workspaces/inf_onsite/test/trtfiles/3d_det_engine_all_orin.trt
+WARNING: [TRT]: The getMaxBatchSize() function should not be used with an engine built from a network created with NetworkDefinitionCreationFlag::kEXPLICIT_BATCH flag. This function will always return 1.
+INFO: [Implicit Engine Info]: layers num: 11
+0   INPUT  kFLOAT input           3x1080x1920     
+1   OUTPUT kFLOAT heatmap         10x270x480      
+2   OUTPUT kFLOAT offset_2d       2x270x480       
+3   OUTPUT kFLOAT size_2d         2x270x480       
+4   OUTPUT kFLOAT depth           2x270x480       
+5   OUTPUT kFLOAT offset_3d       2x270x480       
+6   OUTPUT kFLOAT size_3d         3x270x480       
+7   OUTPUT kFLOAT heading         24x270x480      
+8   OUTPUT kFLOAT center2kpt_offset 16x270x480      
+9   OUTPUT kFLOAT kpt_heatmap     8x270x480       
+10  OUTPUT kFLOAT kpt_heatmap_offset 2x270x480       
+
+0:00:05.414324934 [331m 6546[00m     0x196e4830 [36mINFO   [00m [00m             nvinfer gstnvinfer.cpp:682:gst_nvinfer_logger:<primary-inference>[00m NvDsInferContext[UID 1]: Info from NvDsInferContextImpl::generateBackendContext() <nvdsinfer_context_impl.cpp:2091> [UID = 1]: Use deserialized engine model: /home/icv/workspaces/inf_onsite/test/trtfiles/3d_det_engine_all_orin.trt
+0:00:05.480140776 [331m 6546[00m     0x196e4830 [36mINFO   [00m [00m             nvinfer gstnvinfer_impl.cpp:328:notifyLoadModelStatus:<primary-inference>[00m [UID 1]: Load new model:dstest3_pgie_config.txt sucessfully
+Decodebin child added: source 
+
+Decodebin child added: decodebin0 
+
+
+**PERF:  {'stream0': 0.0} 
+
+Decodebin child added: qtdemux0 
+
+Decodebin child added: multiqueue0 
+
+Decodebin child added: h264parse0 
+
+Decodebin child added: capsfilter0 
+
+Decodebin child added: aacparse0 
+
+Decodebin child added: faad0 
+
+Decodebin child added: nvv4l2decoder0 
+
+Opening in BLOCKING MODE 
+NvMMLiteOpen : Block : BlockType = 261 
+NVMEDIA: Reading vendor.tegra.display-size : status: 6 
+NvMMLiteBlockCreate : Block : BlockType = 261 
+In cb_newpad
+
+gstname= video/x-raw
+features= <Gst.CapsFeatures object at 0xffff92736040 (GstCapsFeatures at 0xfffe7c00d040)>
+In cb_newpad
+
+gstname= audio/x-raw
+WARNING: Num classes mismatch. Configured:4, detected by network: 2
+---------------------------objs_detected---------------------------
+class_id:    3
+-5.119788310271369 ---------- 6.126350402832031
+class_id:    1
+-2.2890373924324705 ---------- 3.5088045597076416
+class_id:    1
+-2.2261628273015273 ---------- 3.3755061626434326
+class_id:    1
+-2.115237358356219 ---------- 3.3574492931365967
+class_id:    0
+-2.2890373924324705 ---------- 3.5088045597076416
+class_id:    0
+-2.2261628273015273 ---------- 3.3755061626434326
+class_id:    0
+-2.115237358356219 ---------- 3.3574492931365967
+---------------------------objs_detected---------------------------
+class_id:    3
+-5.119877001982795 ---------- 6.126439094543457
+class_id:    1
+-2.289157793814917 ---------- 3.508924961090088
+class_id:    1
+-2.2266120079045546 ---------- 3.37595534324646
+class_id:    1
+-2.1151148112065608 ---------- 3.3573267459869385
+class_id:    0
+-2.289157793814917 ---------- 3.508924961090088
+class_id:    0
+-2.2266120079045546 ---------- 3.37595534324646
+class_id:    0
+-2.1151148112065608 ---------- 3.3573267459869385
+---------------------------objs_detected---------------------------
+class_id:    3
+-4.190800543627467 ---------- 5.811596870422363
+class_id:    3
+-5.116640231352912 ---------- 6.123202323913574
+class_id:    1
+-2.2990254858118626 ---------- 3.51810359954834
+class_id:    1
+-2.1885549162633993 ---------- 3.3370909690856934
+class_id:    0
+-2.2990254858118626 ---------- 3.51810359954834
+class_id:    0
+-2.1885549162633993 ---------- 3.3370909690856934
+class_id:    0
+-2.1379137003796194 ---------- 3.3832554817199707
+---------------------------objs_detected---------------------------
+class_id:    1
+-2.2777609327417943 ---------- 3.4968390464782715
+class_id:    1
+-2.1877297495611288 ---------- 3.336265802383423
+class_id:    0
+-2.2777609327417943 ---------- 3.4968390464782715
+class_id:    0
+-2.1877297495611288 ---------- 3.336265802383423
+class_id:    0
+-2.1525607073681448 ---------- 3.397902488708496
+^CExiting app
+
+Script done, file is ds.log
+]0;icv@icv-desktop: ~/workspaces/inf_onsite/camera/monocular_3d/deepstream/deepstream-test3[01;32micv@icv-desktop[00m:[01;34m~/workspaces/inf_onsite/camera/monocular_3d/deepstream/deepstream-test3[00m$ script -c"python3.8 ds_3d_det_ros_main.py -i  file:////home/icv/workspaces/wheel/test_vedio.mp4" ds.log[K]0;icv@icv-desktop: ~/workspaces/inf_onsite/camera/monocular_3d/deepstream/deepstream-test3[01;32micv@icv-desktop[00m:[01;34m~/workspaces/inf_onsite/camera/monocular_3d/deepstream/deepstream-test3[00m$ script -c"python3.8 ds_3d_det_ros_main.py -i  file:////home/icv/workspaces/wheel/test_vedio.mp4" ds.log[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cvlc test_vedio.mp4 [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Khistory
+    1  nvidia-smi
+    2  sudo apt install
+    3  sudo apt dist-upgrade
+    4  sudo apt install nvidia-jetpack
+    5  sudo rebbot
+    6  sudo reboot
+    7  pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+    8  pip
+    9  python
+   10  which python
+   11  sudo apt update
+   12  sudo apt install python3
+   13  sudo apt install python3-pip
+   14  pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+   15  nvidia-smi
+   16  nvidia-sm
+   17  nvidia-smi
+   18  sudo apt install nvidia-jetpack
+   19  sudo apt dist-upgrade
+   20  which nvidia-smi
+   21  nvidia-smi
+   22  mkdir workspaces
+   23  cd workspaces/
+   24  ls
+   25  git clone --recursive https://github.com/dusty-nv/jetson-inference
+   26  ls
+   27  sudo fdisk -1
+   28  sudo fdisk -l
+   29  sudo fdisk /dev/nvme0n1
+   30  sudo mkf2.ext4 /dev/nvme0n1
+   31  partprobe /dev/nvme0n1
+   32  sudo partprobe /dev/nvme0n1
+   33  sudo mkfs -t ext3 /dev/nvme0n1
+   34  sudo mkdir /mnt/my_drive
+   35  sudo mount /dev/nvme0n1 /mnt/my_drive
+   36  cd /mnt/my_drive/
+   37  ls
+   38  sudo fdisk -l
+   39  ls
+   40  sudo mkdir workspaces
+   41  cd workspaces/
+   42  ls
+   43  docker
+   44  docker pull nvcr.io/nvidia/deepstream:6.2-triton
+   45  sudo docker pull nvcr.io/nvidia/deepstream:6.2-triton
+   46  sudo docker pull nvcr.io/nvidia/deepstream:6.3-triton
+   47  sudo docker pull nvcr.io/nvidia/deepstream:6.2-triton
+   48  docker images
+   49  sudo docker images
+   50  xhost +
+   51  sudo xhost +
+   52  ls
+   53  ls -hl
+   54  ls -l
+   55  ls
+   56  ifconfig
+   57  sudo fdisk -l
+   58  cd workspaces/
+   59  ls
+   60  code .
+   61  histpry
+   62  history
+   63  sudo fdisk -l
+   64  lsblk -f
+   65  sudo fdisk -l
+   66  sudo mount -t auto /dev/nvme0n1 /home/icv/workspaces/
+   67  lsblk -f
+   68  df -T
+   69  sudo fsck /dev/nvme0n1 
+   70  sudo chmod 777 /home/icv/workspaces/
+   71  code .
+   72  ls
+   73  pwd
+   74  history
+   75  sudo fdisk -l
+   76  lsblk -f
+   77  df -h
+   78  cd workspaces/code/
+   79  code .
+   80  ifconfig
+   81  git clone https://github.com/cyrusbehr/tensorrt-cpp-api.git
+   82  cd tensorrt-cpp-api/
+   83  code .
+   84  docker
+   85  docker images
+   86  sudo docker images
+   87  sudo docker images ls
+   88  sudo docker images
+   89  ls
+   90  xhost +
+   91  sudo xhost +
+   92  xhost +
+   93  sudo docker run --gpus all -it -d -v /home/icv/workspaces/code/:/home/icv/workspaces/code/ --name inf-docker nvcr.io/nvidia/deepstream:6.2-triton
+   94  sudo docker run -it -d -v /home/icv/workspaces/code/:/home/icv/workspaces/code/ --name inf-docker nvcr.io/nvidia/deepstream:6.2-triton
+   95  sudo docker run -it -d -v /home/icv/workspaces/code/:/home/icv/workspaces/code/ --name icv-docker nvcr.io/nvidia/deepstream:6.2-triton
+   96  docker pa -a
+   97  docker ps -a
+   98  sudo docker ps -a
+   99  docker exec -it ea764d57152e /bin/bash
+  100  sudo docker exec -it ea764d57152e /bin/bash
+  101  sudo docker ps -a
+  102  sudo docker exec -it ea764d57152e /bin/bash
+  103  sudo docker exec -it f3bdc72f65b5 /bin/bash
+  104  docker start
+  105  docker start inf-docker
+  106  sudo docker start inf-docker
+  107  sudo docker start icv-docker
+  108  sudo docker exec -it icv-docker /bin/bash
+  109  sudo docker start icv-docker
+  110  sudo docker ps -a
+  111  sudo docker start icv-docker
+  112  sudo docker exec -it icv-docker /bin/bash
+  113  sudo docker images
+  114  docker iamges
+  115  docker images
+  116  sudo docker images
+  117  docker rmi adb2e0a9b1ee
+  118  sudo docker rmi adb2e0a9b1ee
+  119  docker stop 65415e0d4cbf
+  120  sudo docker stop 65415e0d4cbf
+  121  sudo docker rmi adb2e0a9b1ee
+  122  docker rm 65415e0d4cbf
+  123  sudo docker rm 65415e0d4cbf
+  124  sudo docker rmi adb2e0a9b1ee
+  125  cd workspaces/
+  126  cd code/
+  127  ls
+  128  cd tensorrt-cpp-api/
+  129  code .
+  130  ls
+  131  sudo apt-get -y install cmake
+  132  cmake --version
+  133  sudo -H pip install jetson-stats
+  134  sudo jtop
+  135  sudo systemctl restart jtop.service
+  136  sudo jtop
+  137  cd ..
+  138  git clone https://github.com/mdegans/nano_build_opencv.git
+  139  ls
+  140  cd nano_build_opencv/
+  141  docker
+  142  docker start inf-docker
+  143  sudo docker start inf-docker
+  144  sudo update-locale LANG=C.UTF-8
+  145  sudo sh -c 'echo "deb [arch=arm64,armhf] http://packages.ros.org/ros2/ubuntu focal main" > /etc/apt/sources.list.d/ros2.list'
+  146  sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+  147  sudo apt update && sudo apt install -y build-essential cmake git python3-colcon-common-extensions python3-pip
+  148  sudo apt install -y   python3-argcomplete   python3-rosdep   python3-vcstool   python3-yaml   python3-pyparsing   libpython3-dev
+  149  sudo apt update
+  150  sudo apt install -y ros-foxy-desktop
+  151  history
+  152  sudo rosdep init
+  153  rosdep update
+  154  sudo rosdep init
+  155  rosdep init
+  156  rosdep update
+  157  sudo rosdep init
+  158  sudo wget https://raw.githubusercontent.com/ros/rosdistro/master/rosdep/sources.list.d/20-default.list -O /etc/ros/rosdep/sources.list.d/20-default.list
+  159  sudo rosdep init
+  160  source /opt/ros/foxy/setup.bash
+  161  ros2
+  162  pip3 install pyds
+  163  ls
+  164  cd workspaces/
+  165  ls
+  166  cd code/
+  167  ls
+  168  cd ..
+  169  ls
+  170  code .
+  171  git status
+  172  cd inf_onsite/
+  173  git status
+  174  sudo docker exec -it inf-docker /bin/bash
+  175  ls
+  176  pwd
+  177  cd code/
+  178  ls
+  179  scp -r /home/jan5szh/workspaces/inf_onsite icv@192.168.99.130:/home/icv/workspaces/code/inf_onsite
+  180  scp -r /home/jan5szh/workspaces/inf_onsite/ icv@192.168.99.130:/home/icv/workspaces/code/inf_onsite/
+  181  code .
+  182  sudo jtop
+  183  nvcc -v
+  184  ln -s /usr/local/cuda-11 /usr/local/cuda
+  185  sudo ln -s /usr/local/cuda-11 /usr/local/cuda
+  186  sudo vim /etc/profile
+  187  source /etc/profile
+  188  nvcc -v
+  189  sudo vim /etc/profile
+  190  source /etc/profile
+  191  nvcc -v
+  192  nvcc --help
+  193  nvcc -V
+  194  sudo cp /usr/include/cudnn.h /usr/local/cuda-11/include
+  195  sudo cp /usr/lib/aarch64-linux-gnu/libcudnn* /usr/local/cuda-11/lib64/
+  196  sudo chmod 777 /usr/local/cuda-11/include/cudnn.h /usr/local/cuda-11/lib64/libcudnn*
+  197  cd /usr/local/cuda-11/lib64
+  198  ll libcudd*
+  199  ll libcudnn*
+  200  sudo ldconfig
+  201  sudo cp -r /usr/src/cudnn_samples_v8/ /tmp/
+  202  cd /tmp/cudnn_samples_v8/conv_sample/
+  203  sudo make clean
+  204  sudo make
+  205  ./conv_sample 
+  206  sudo chmod -R 777 /usr/src/tensorrt
+  207  cd /usr/src/tensorrt/samples/sampleINT8API/
+  208  sudo make
+  209  cd ../../bin/
+  210  ./sample_int8_api
+  211  cd /home/icv/workspaces/
+  212  code .
+  213  history
+  214  sudo vim /etc/profile
+  215  history
+  216  history
+  217  ln -s /usr/src/tensorrt/bin/trtexec /usr/bin/trtexec
+  218  sudo ln -s /usr/src/tensorrt/bin/trtexec /usr/bin/trtexec
+  219  sudo jtop
+  220  ls
+  221  git clone https://github.com/CroncLee/nvidia-tookit-learning.git
+  222  sudo docker exec -it inf-docker /bin/bash
+  223  cd ..
+  224  code .
+  225  ls
+  226  cd workspaces/
+  227  code .
+  228  cd tensor/
+  229  ls
+  230  mkdir build
+  231  ls
+  232  cd build/
+  233  cmake ..
+  234  rm -rf CMakeCache.txt CMakeFiles/
+  235  cmake ..
+  236  docker images
+  237  sudo docker images
+  238  docker pa -a
+  239  docker ps -a
+  240  sudo docker ps -a
+  241  docker images
+  242  sudo docker images
+  243  cd ..
+  244  cd tensor/
+  245  cd build/
+  246  cmake build ..
+  247  cd /usr/src/tensorrt/
+  248  ls
+  249  cd samples/
+  250  ls
+  251  cd ..
+  252  ls
+  253  cd /usr/local/
+  254  ls
+  255  cd cuda-11.4/
+  256  ls
+  257  cd include
+  258  ls
+  259  cd ..
+  260  cd /home/icv/workspaces/
+  261  ls
+  262  cd tensor/
+  263  history
+  264  cd build/
+  265  rm -rf CMakeCache.txt CMakeFiles/
+  266  cmake ..
+  267  ls
+  268  make
+  269  cd /usr/lib
+  270  ls
+  271  find |grep nvinfer
+  272  cd ..
+  273  ls
+  274  cd /usr/include/
+  275  ls
+  276  pwd
+  277  cd /usr/lib
+  278  ls
+  279  cd aarch64-linux-gnu
+  280  cd /home/icv/
+  281  ls
+  282  cd workspaces/
+  283  ls
+  284  cd tensor/
+  285  history
+  286  cd build/
+  287  rm -rf CMakeCache.txt CMakeFiles/
+  288  cmake ..
+  289  make
+  290  rm -rf CMakeCache.txt CMakeFiles/
+  291  cmake ..
+  292  make
+  293  pip install onnxruntime
+  294  pip install onnx
+  295  pip install onnxruntime
+  296  pip install tqdm
+  297  pip install opencv-python
+  298  history
+  299  cd tensor/
+  300  cd build/
+  301  ls
+  302  rm -rf CMakeCache.txt CMakeFiles/
+  303  cmake ..
+  304  ls
+  305  make
+  306  rm -rf CMakeCache.txt CMakeFiles/
+  307  cmake ..
+  308  make
+  309  rm -rf CMakeCache.txt CMakeFiles/
+  310  cmake ..
+  311  make
+  312  rm -rf CMakeCache.txt CMakeFiles/
+  313  cmake ..
+  314  make
+  315  rm -rf CMakeCache.txt CMakeFiles/
+  316  cmake ..
+  317  make
+  318  rm -rf CMakeCache.txt CMakeFiles/
+  319  cmake ..
+  320  make
+  321  cd /home/icv/workspaces/
+  322  code .
+  323  cd tensor/
+  324  mkdir build
+  325  cd build/
+  326  cmake ..
+  327  make
+  328  pip install netron
+  329  cd ..
+  330  cd ~/workspaces/
+  331  ls
+  332  git clone https://github.com/lutzoeder/Netron
+  333  pip install tensorrt
+  334  pip install pycuda
+  335  /bin/python3.9 /home/icv/workspaces/inf_onsite/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_onnx_compa.py
+  336  pip install Cython numpy 'pillow<7'
+  337  pip install torch-1.11.0-cp38-cp38-linux_aarch64.whl
+  338  cd inf_onsite/
+  339  ls
+  340  cd camera/
+  341  ls
+  342  cd monocular_3d/
+  343  ls
+  344  deepstream/
+  345  ls
+  346  cd deepstream/
+  347  ls
+  348  cd inference_script/
+  349  ls
+  350  cd inference_parser/
+  351  ls
+  352  cd monocam_det/
+  353  ls
+  354  cd nvdsinfer_monocular_cam_3d_det/
+  355  ls
+  356  cd build/
+  357  make
+  358  cmake ..
+  359  make
+  360  cd code/
+  361  ls
+  362  cd ..
+  363  ls
+  364  code .
+  365  trtexec
+  366  sudo trtexec --onnx=/home/icv/workspaces/inf_onsite/test/onnxfiles/3d_det.onnx --saveEngine=/home/icv/workspaces/inf_onsite/test/trtfiles/3d_det_engine_orin.trt --noTF32
+  367  history
+  368  sudo docker exec -it inf-docker /bin/bash
+  369  history
+  370  ping 192.168.99.183
+  371  history
+  372  sudo docker exec -it inf-docker /bin/bash
+  373  pip
+  374  sudo update-locale LANG=C.UTF-8
+  375  sudo sh -c 'echo "deb [arch=arm64,armhf] http://packages.ros.org/ros2/ubuntu focal main" > /etc/apt/sources.list.d/ros2.list'
+  376  sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+  377  sudo apt update && sudo apt install -y build-essential cmake git python3-colcon-common-extensions python3-pip
+  378  sudo apt install -y   python3-argcomplete   python3-rosdep   python3-vcstool   python3-yaml   python3-pyparsing   libpython3-dev
+  379  sudo apt update
+  380  sudo apt install -y ros-foxy-desktop
+  381  source /opt/ros/foxy/setup.bash
+  382  ros2
+  383  wget https://nvidia.box.com/shared/static/ssf2v7pf5i245fk4i0q926hy4imzs2ph.whl
+  384  ls
+  385  wget https://nvidia.box.com/shared/static/ssf2v7pf5i245fk4i0q926hy4imzs2ph.whl
+  386  jtop
+  387  sudo apt-get install python-pip
+  388  pip --version
+  389  git clone http://github.com/pytorch/pytorch
+  390  which python
+  391  cd tensor/
+  392  g++ test.cpp -o out
+  393  ./out 
+  394  sudo jtop
+  395  ./out 
+  396  ifconfig
+  397  pip install opencv-python
+  398  pip install yaml
+  399  pip install torch-1.11.0-cp38-cp38-linux_aarch64.whl
+  400  cd ..
+  401  ls
+  402  cd wheel/
+  403  pip install torch-1.11.0-cp38-cp38-linux_aarch64.whl
+  404  python
+  405  jtop
+  406  pip install torch-2.1.0a0+41361538.nv23.06-cp38-cp38-linux_aarch64.whl 
+  407  pip install onnxruntime_gpu-1.16.0-cp38-cp38-linux_aarch64.whl 
+  408  which python
+  409  cd wheel/
+  410  python test.py 
+  411  pip install torch-2.1.0a0+41361538.nv23.06-cp38-cp38-linux_aarch64.whl 
+  412  bash Miniforge3-Linux-aarch64.sh 
+  413  conda
+  414  ls
+  415  conda
+  416  cd /home/icv/miniforge3/etc/profile.d/
+  417  ls
+  418  echo "/home/icv/miniforge3/etc/profile.d/conda.sh" >> ~/.bashrc 
+  419  conda activate
+  420  vi ~/.bashrc 
+  421  conda activate
+  422  source ~/.bashrc 
+  423  vi ~/.bashrc 
+  424  source ~/.bashrc 
+  425  sudo source ~/.bashrc 
+  426  source ~/.bashrc 
+  427  vi ~/.bashrc 
+  428  conda
+  429  /usr/bin/python /home/icv/workspaces/inf_onsite/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_onnx_compa.py
+  430  pip install pycuda
+  431  ls
+  432  cd workspaces/
+  433  ls
+  434  ifconfig
+  435  history
+  436  sudo docker start inf-docker
+  437  ros2
+  438  ls
+  439  code .
+  440  source ~/ros2_ws/install/setup.bash
+  441  ls
+  442  sudo docker exec -it inf-docker /bin/bash
+  443  conda activate trt
+  444  ls
+  445  cd workspaces/
+  446  code .
+  447  vi
+  448  ls
+  449  cd workspaces/
+  450  code .
+  451  cd wheel/
+  452  ls
+  453  unzip vision-release-0.16.zip 
+  454  cd vision-release-0.16/
+  455  export BUILD_VERSION=0.16.0
+  456  python3 setup.py install --user
+  457  python3   setup.py   sdist   bdist_wheel
+  458  pip install nvidia-pyindex
+  459  pip install nvidia-tensorrt
+  460  sudo apt-get install python3-libnvinfer
+  461  sudo apt-get install python3-libnvinfer-dev
+  462  sudo apt install python3-libnvinfer
+  463  sudo apt install python3-libnvinfer*
+  464  cd workspaces/
+  465  git clone https://github.com/pytorch/vision torchvision  
+  466  cd wheel/
+  467  git clone https://github.com/pytorch/vision torchvision  
+  468  python3 -m pip list |grep Pillow
+  469  history
+  470  sudo docker exec -it inf-docker /bin/bash
+  471  sudo docker start inf-docker
+  472  sudo docker exec -it inf-docker /bin/bash
+  473  cd workspaces/
+  474  code .
+  475  dpkg -l|grep TensorRT
+  476  ssh 192.168.99.183
+  477  ping192.168.99.183
+  478  ping 192.168.99.183
+  479  jtop
+  480  history
+  481  sudo apt install nvidia-l4t-dla-compiler
+  482  sudo apt install nvidia-l4t-gstreamer
+  483  docker rm inf-docker
+  484  sudo docker rm inf-docker
+  485  sudo docker images
+  486  sudo docker rmi 3b728019a279
+  487  sudo docker stop inf-docker
+  488  sudo docker rm inf-docker
+  489  sudo docker rmi 3b728019a279
+  490  sudo docker pull nvcr.io/nvidia/deepstream:6.1-triton-multiarch
+  491  sudo docker pull nvcr.io/nvidia/deepstream:6.1.1-triton-multiarch
+  492  conda activate trt
+  493  /home/icv/miniforge3/envs/trt/bin/python /home/icv/workspaces/inf_onsite/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_onnx_compa.py
+  494  docker ps
+  495  sudo docker ps -a
+  496  /home/icv/miniforge3/envs/trt/bin/python /home/icv/workspaces/inf_onsite/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_onnx_compa.py
+  497  pip install yaml
+  498  pip install pyyaml
+  499  /home/icv/miniforge3/envs/trt/bin/python /home/icv/workspaces/inf_onsite/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_onnx_compa.py
+  500  cd /usr/src/tensorrt/
+  501  ls
+  502  cd ..
+  503  ls
+  504  cd lib/aarch64-linux-gnu/
+  505  ls
+  506  pip install matplotlib
+  507  sudo apt-get -y install cmake libopenblas-base libopenmpi-dev autoconf bc build-essential g++-8 gcc-8 clang-8 lld-8 gettext-base gfortran-8 iputils-ping libbz2-dev libc++-dev libcgal-dev libffi-dev libfreetype6-dev libhdf5-dev libjpeg-dev liblzma-dev libncurses5-dev libncursesw5-dev libpng-dev libreadline-dev libssl-dev libsqlite3-dev libxml2-dev libxslt-dev locales moreutils openssl python-openssl rsync scons python3-pip libopenblas-dev libjpeg-dev zlib1g-dev libpython3-dev libavcodec-dev libavformat-dev libswscale-dev
+  508  cd /usr/lib/aarch64-linux-gnu/
+  509  ls
+  510  cd tegra/
+  511  ls
+  512  python
+  513  pip install nvidia-pyindex
+  514  pip install nvidia-tensorrt
+  515  pip install tensorrt
+  516  gtop
+  517  jtop
+  518  cd ~/workspaces/
+  519  ls
+  520  cd tensor/
+  521  ls
+  522  ./out 
+  523  pip install tensorrt==8.5.2
+  524  pip install tensorrt==8.6.1
+  525  pip install nvidia-tensorrt
+  526  pip install nvidia-tensorrt==8.4.1.5
+  527  pip install nvidia-tensorrt
+  528  python3 -m pip install --upgrade tensorrt
+  529  ./out 
+  530  pip install nvidia-tensorrt
+  531  pip install nvidia-tensorrt --pre
+  532  pip install nvidia-tensorrt==
+  533  pip install nvidia-tensorrt==0.0.1.dev4
+  534  pip install nvidia-tensorrt==0.0.1.dev5
+  535  ./out 
+  536  history
+  537  ls
+  538  mkdir build
+  539  cd build/
+  540  cmake ..
+  541  make
+  542  ros2
+  543  ros
+  544  source /opt/ros/foxy/setup.bash
+  545  ros2
+  546  cd /tmp/
+  547  ls
+  548  sudo cp -r /usr/src/cudnn_samples_v8/ /tmp/
+  549  cd /tmp/cudnn_samples_v8/conv_sample
+  550  sudo make clean
+  551  sudo make
+  552  ./conv_sample
+  553  cd /usr/src/tensorrt/samples/sampleINT8/
+  554  cd /usr/src/tensorrt/samples/sampleINT8API/
+  555  ls
+  556  sudo make
+  557  cd ../../bin/
+  558  ./sample_int8_api
+  559  cd /usr/lib/python3.8/dist-packages/
+  560  ls
+  561  cd cv2
+  562  cd python-3.8/
+  563  ls
+  564  cd ..
+  565  find |grep tensor
+  566  conda deactivate
+  567  which python
+  568  conda config --set auto_activate_base false
+  569  /bin/python /home/icv/workspaces/inf_onsite/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_onnx_compa.py
+  570  pip install pycuda
+  571  ros2
+  572  ls
+  573  conda deactivate
+  574  ls
+  575  conda config --set auto_activate_base false
+  576  conda deactivate
+  577  which python
+  578  python
+  579  pip install Cython numpy 'pillow<7'
+  580  cd workspaces/
+  581  cd wheel/
+  582  pip install torch-2.1.0a0+41361538.nv23.06-cp38-cp38-linux_aarch64.whl 
+  583  pip install torchvision-0.16.0-cp38-cp38-linux_aarch64.whl 
+  584  ls
+  585  pip install onnxruntime_gpu-1.16.0-cp38-cp38-linux_aarch64.whl 
+  586  /bin/python /home/icv/workspaces/inf_onsite/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_onnx_compa.py
+  587  pip install pycuda
+  588  /bin/python /home/icv/workspaces/inf_onsite/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_onnx_compa.py
+  589  pip install pycuda
+  590  jtop
+  591  cd ..
+  592  ls
+  593  code .
+  594  which python
+  595  /bin/python /home/icv/workspaces/inf_onsite/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_onnx_compa.py
+  596  /usr/bin/python /home/icv/workspaces/inf_onsite/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_onnx_compa.py
+  597  pip install pycuda
+  598  which python
+  599  where python
+  600  sudo docker pull nvcr.io/nvidia/deepstream:6.2-triton-multiarch
+  601  sudo docker pull nvcr.io/nvidia/deepstream:6.2-triton
+  602  sudo docker pull nvcr.io/nvidia/deepstream:6.2-base
+  603  sudo docker images
+  604  sudo docker ps -a
+  605  wget https://dl.todesk.com/linux/todesk_4.0.3_aarch64.deb
+  606  ls
+  607  sudo dpkg -i todesk_4.0.3_aarch64.deb
+  608  cd workspaces/
+  609  code .
+  610  code .
+  611  nvcc -V
+  612  cd Downloads/
+  613  tar zxvf pycuda-20
+  614  cd pycuda-2019.1.2/
+  615  python3 configure.py --cuda-root=/usr/local/cuda-11
+  616  sudo python3 setup.py install
+  617  ifconfig
+  618  cd ..
+  619  tar zxvf pycuda-2023.1.tar.gz 
+  620  cd pycuda-2023.1/
+  621  python3 configure.py --cuda-root=/usr/local/cuda-11
+  622  sudo python3 setup.py install
+  623  pip install pytools
+  624  sudo python3 setup.py install
+  625  which python
+  626  history
+  627  cd ~/workspaces/wheel/
+  628  pip install cuda_python-12.3.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl 
+  629  cd /usr/local/cuda-11
+  630  ls
+  631  sudo docker pull nvcr.io/nvidia/deepstream:6.3-triton-multiarch
+  632  sudo docker images
+  633  cd /var/lib/docker/
+  634  sudo cd /var/lib/docker/
+  635  cd /var/lib/docker/
+  636  sudo su
+  637  cd /home/icv/workspaces/inf_onsite_docker/
+  638  ls
+  639  sudo docker run -it -d -v /home/icv/workspaces/inf_onsite_docker/:/home/icv/workspaces/inf_onsite_docker/ --name inf-docker nvcr.io/nvidia/deepstream:6.3-triton-multiarch
+  640  sudo docker run --gpus all -it -d -v /home/icv/workspaces/inf_onsite_docker/:/home/icv/workspaces/inf_onsite_docker/ --name inf-docker nvcr.io/nvidia/deepstream:6.3-triton-multiarch
+  641  sudo docker ps -a
+  642  xhost +
+  643  sudo xhost +
+  644  sudo docker exec -it inf-docker /bin/bash
+  645  /usr/bin/python /home/icv/workspaces/inf_onsite/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_onnx_compa.py
+  646  pip install depth_geometry
+  647  history
+  648  /usr/bin/python /home/icv/workspaces/wheel/test.py
+  649  /usr/bin/python /home/icv/workspaces/tensorrt_py.py
+  650  pip install cuda-python
+  651  /usr/bin/python /home/icv/workspaces/tensorrt_py.py
+  652  ls
+  653  cd workspaces/
+  654  ls
+  655  code .
+  656  sudo su
+  657  ls
+  658  cd workspaces/
+  659  code .
+  660  cd workspaces/
+  661  cd wheel/
+  662  ls
+  663  sudo apt install ./deepstream-6.3_6.3.0-1_arm64.deb 
+  664  pip install pyds-1.1.8-py3-none-linux_aarch64.whl 
+  665  cd /opt/nvidia/deepstream/deepstream-6.3/sources/
+  666  cd includes/
+  667  ls
+  668  code .
+  669  python3.8 ds_3d_det_ros_main.py 
+  670  cd /home/icv/workspaces/inf_onsite/camera/monocular_3d/deepstream/deepstream-test3
+  671  python3.8 ds_3d_det_ros_main.py 
+  672  source /home/icv/workspaces/ros2_ws/install/perception_kit_msgs/share/perception_kit_msgs/local_setup.bash
+  673  source /home/icv/workspaces/ros2_ws/install/local_setup.bash 
+  674  source /home/icv/workspaces/ros2_ws/install/adma_msgs/share/adma_msgs/local_setup.bash 
+  675  python3.8 ds_3d_det_ros_main.py 
+  676  pip install geopy
+  677  python3.8 ds_3d_det_ros_main.py 
+  678  history
+  679  python3.8 ds_3d_det_ros_main.py -i  file:////home/icv/workspaces/wheel/test_vedio.mp4
+  680  cd ~/miniforge3/envs/trt/lib/
+  681  ls
+  682  cd python3.8/
+  683  ls
+  684  cd ..
+  685  ls
+  686  cd lib/
+  687  ls
+  688  cd ..
+  689  conda activate
+  690  conda deactivate
+  691  conda activate trt
+  692  ls
+  693  pip show tensorrt
+  694  pip show numpy
+  695  pip install scipy
+  696  pip install scipy -i https://mirrors.aliyun.com/pypi/simple/
+  697  pip show scipy
+  698  ls
+  699  cd lib/
+  700  ls
+  701  cd python3.8/distutils/
+  702  ls
+  703  cd ..
+  704  cd /home/icv/miniforge3/envs/trt/lib/python3.8/site-packages
+  705  ls
+  706  pwd
+  707  ls
+  708  python
+  709  cd ls
+  710  ls
+  711  cd ~/workspaces/wheel/
+  712  ls
+  713  pip install pyds-1.1.8-py3-none-linux_aarch64.whl
+  714  cd ..
+  715  mkdir ros2_ws
+  716  cd ros2_ws/
+  717  ls
+  718  colcon build
+  719  colcon build perception_kit_visu
+  720  colcon build --packages perception_kit_visu
+  721  colcon build --packages-select perception_kit_visu
+  722  colcon build --packages-select perception_kit_msgs
+  723  colcon build --packages-select adma_msgs
+  724  colcon build --packages-select perception_kit_visu
+  725  pwd
+  726  source /home/icv/workspaces/ros2_ws/install/perception_kit_msgs/share/perception_kit_msgs/local_setup.bash
+  727  source /home/icv/workspaces/ros2_ws/install/local_setup.bash 
+  728  source /home/icv/workspaces/ros2_ws/install/adma_msgs/share/adma_msgs/local_setup.bash 
+  729  cd workspaces/
+  730  code .
+  731  jtop
+  732  locale
+  733  nvcc -V
+  734  pyds -v
+  735  history
+  736  history|grep mount
+  737  sudo mount -t auto /dev/nvme0n1 /home/icv/workspaces/
+  738  /usr/bin/python /home/icv/workspaces/inf_onsite/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/trt_onnx_compa.py
+  739  pip show tnesorrt
+  740  pip show tensorrt
+  741  pip show numpy
+  742  ls
+  743  cd /usr/lib/python3.8/dist-packages/cv2/python-3.8/
+  744  ls
+  745  cd ...
+  746  ls
+  747  cd ..
+  748  ls
+  749  ls -lm
+  750  ls
+  751  cp -r /usr/lib/python3.8/dist-packages/* /home/icv/miniforge3/envs/trt/lib/python3.8/site-packages/
+  752  ls
+  753  git status
+  754  ls
+  755  git status
+  756  python3.8 ds_3d_det_ros_main.py 
+  757  pwd
+  758  python3.8 ds_3d_det_ros_main.py 
+  759  conda
+  760  pwd
+  761  which python
+  762  pip install pycuda
+  763  pip install pycuda --user
+  764  nvcc --version
+  765  gedit
+  766  nvcc --version
+  767  ifconfig
+  768  cd /usr/
+  769  ls
+  770  pip show torch
+  771  cd /home/icv/.local/lib/python3.8/site-packages
+  772  ls
+  773  cd torch
+  774  ls
+  775  cd include/
+  776  ls
+  777  cd torch/
+  778  ls
+  779  cd ..
+  780  cd share/
+  781  ls
+  782  cd cmake/
+  783  ls
+  784  cd Torch/
+  785  ls
+  786  pwd
+  787  cd /home/icv/workspaces/inf_onsite/camera/monocular_3d/deepstream/inference_script/inference_parser/monocam_det/nvdsinfer_monocular_cam_3d_det/
+  788  ls
+  789  mkdir build
+  790  cd build/
+  791  cmake ..
+  792  make
+  793  pwd
+  794  cd /home/icv/workspaces/inf_onsite/camera/monocular_3d/deepstream/deepstream-test3
+  795  python3.8 ds_3d_det_ros_main.py -i  file:////home/icv/Edward/tools/test_pic_video.mp4
+  796  python3.8 ds_3d_det_ros_main.py -i  file:////home/icv/workspaces/wheel/test_vedio.mp4
+  797  clear
+  798  python3.8 ds_3d_det_ros_main.py -i  file:////home/icv/workspaces/wheel/test_vedio.mp4
+  799  clear
+  800  history
+  801  history|grep mount
+  802  sudo mount -t auto /dev/nvme0n1 /home/icv/code/
+  803  code .
+  804  cd /home/icv/workspaces/inf_onsite/camera/monocular_3d/deepstream/deepstream-test3
+  805  python3.8 ds_3d_det_ros_main.py -i  file:////home/icv/workspaces/wheel/test_vedio.mp4
+  806  cd /home/icv/workspaces/inf_onsite/camera/monocular_3d/deepstream/deepstream-test3
+  807  python3.8 ds_3d_det_ros_main.py -i  file:////home/icv/workspaces/wheel/test_vedio.mp4
+  808  cd /home/icv/workspaces/inf_onsite/camera/monocular_3d/deepstream/deepstream-test3
+  809  python3.8 ds_3d_det_ros_main.py -i  file:////home/icv/workspaces/wheel/test_vedio.mp4
+  810  sudo gedit /etc/fstab 
+  811  sudo vi /etc/fstab 
+  812  cp /etc/fstab /etc/fstab.bak
+  813  sudo cp /etc/fstab /etc/fstab.bak
+  814  blkid /dev/nvme0n1
+  815  blkid
+  816  lsblk -f
+  817  echo UUID=75bb84f1-4e3e-4554-9edd-eaad26966605 /home/icv/code/ ext4 default 0 0 >> /etc/fstab
+  818  sudo echo UUID=75bb84f1-4e3e-4554-9edd-eaad26966605 /home/icv/code/ ext4 default 0 0 >> /etc/fstab
+  819  sudo su
+  820  sudo apt-get update
+  821  sudo apt-get install vlc
+  822  sudo apt-get install ffmpeg
+  823  cd /home/icv/workspaces/inf_onsite/camera/monocular_3d/deepstream/deepstream-test3
+  824  python3.8 ds_3d_det_ros_main.py -i  file:////home/icv/workspaces/wheel/test_vedio.mp4
+  825  sudo trtexec --onnx=/home/icv/workspaces/inf_onsite/test/onnxfiles/3d_det_140.onnx --saveEngine=/home/icv/workspaces/inf_onsite/test/trtfiles/3d_det_engine_140_orin.trt --noTF32
+  826  python3.8 ds_3d_det_ros_main.py -i  file:////home/icv/workspaces/wheel/test_vedio.mp4
+  827  sudo trtexec --onnx=/home/icv/workspaces/inf_onsite/test/onnxfiles/3d_det_all.onnx --saveEngine=/home/icv/workspaces/inf_onsite/test/trtfiles/3d_det_engine_all_orin.trt --noTF32
+  828  python3.8 ds_3d_det_ros_main.py -i  file:////home/icv/workspaces/wheel/test_vedio.mp4
+  829  sudo apt-get remove vlc
+  830  sudo apt-get install vlc
+  831  vlc test_vedio.mp4 
+  832  vlc sample_1080

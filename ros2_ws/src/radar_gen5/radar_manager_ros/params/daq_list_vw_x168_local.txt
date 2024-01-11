@@ -1,0 +1,8 @@
+# Radar DAQ configuration. Each daq list has one event channel and a config file for addresses/data sizes
+# format: 
+# <name> <params_file> <event_channel> 
+# 
+core2_bg vw_x168_local_locations.txt 0x0c
+core1_bg vw_x168_local_odometry_and_mount_pose.txt 0x08
+mD9A31001 vw_x168_local_4k_blocks.txt 0x136
+#

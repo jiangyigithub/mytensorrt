@@ -1,0 +1,11 @@
+input:
+ frame: "odom"
+ topic: "/fusion/obstacles"
+
+output:
+ frame: "base_link"
+ topic: "/perception_kit/fusion/objects"
+ target_frame_needs_motion: true
+
+motion:
+  topic: "/egoestimation/odometry_referenced_egomotion"

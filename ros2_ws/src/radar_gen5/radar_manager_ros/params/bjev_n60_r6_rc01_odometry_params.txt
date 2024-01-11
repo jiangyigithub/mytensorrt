@@ -1,0 +1,32 @@
+# format:
+# <name> <address> <size> <diagnostic_active> <required_num_nonzero> <filter_duplication>
+# name:                   signal name (String)
+# address:                start address of this signal (Hex)
+# size:                   size of this message (Hex)
+# diagnostic_active:      switch on/off diagnostic updater on this message (Bool)
+# required_num_nonzero:   minimum required non zero bytes in message (Decimal)
+# filter_duplication:     Turn on to filter consecutive duplicate messages (Bool)
+#
+
+
+# _g_PerHv_HV_PerPmeRunnable_PerPmeRunnable.PerRunnable._._m_controller._m_StatObjVelAdj._m_facTireSize._sig
+# _g_PerHv_HV_PerPmeRunnable_PerPmeRunnable.PerRunnable._._m_controller._m_StatObjVelAdj._m_facTireSize._var
+#
+# This contains the estimated scale factor for the longitudinal velocity of the odometry (two floats, mean and variance)
+
+odometry_velocity_scale 0x70011298 0x8 false 0 false
+
+
+# _g_PerHv_HV_PerPmeRunnable_PerPmeRunnable.PerRunnable._._m_controller._m_YawRateOffsetFusion._m_psiDtOffCompensation._sig
+# _g_PerHv_HV_PerPmeRunnable_PerPmeRunnable.PerRunnable._._m_controller._m_YawRateOffsetFusion._m_psiDtOffCompensation._var
+#
+# This contains the estimated offset for the yaw rate received from the ESP (two floats, mean and variance)
+
+odometry_yaw_rate_offset 0x7001185C 0x8 false 0 false
+
+# _g_PerHv_HV_PerPmeRunnable_PerPmeRunnable.PerRunnable._._m_controller._m_WheelAngOffset._m_deltaFrontLpFiltered._sig
+# _g_PerHv_HV_PerPmeRunnable_PerPmeRunnable.PerRunnable._._m_controller._m_WheelAngOffset._m_deltaFrontLpFiltered._var
+#
+# This contains the estimated offset for the front wheel angle (two floats, mean and variance)
+
+odometry_front_wheel_angle_offset 0x700112FC 0x8 false 0 false

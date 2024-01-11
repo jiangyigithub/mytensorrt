@@ -1,0 +1,18 @@
+subscriber_topics: [
+  /sensor/radar_gen5/radar_locations_decoder_gen5/location_interface/LRR5_Corner_Front_Left,
+  /sensor/radar_gen5/radar_locations_decoder_gen5/location_interface/LRR5_Corner_Front_Right,
+  /sensor/radar_gen5/radar_locations_decoder_gen5/location_interface/LRR5_Corner_Rear_Left,
+  /sensor/radar_gen5/radar_locations_decoder_gen5/location_interface/LRR5_Corner_Rear_Right
+]
+
+subscriber_frame_id: [
+  LRR5_Corner_Rear_Left,
+  LRR5_Corner_Rear_Right,
+  LRR5_Corner_Front_Left,
+  LRR5_Corner_Front_Right
+]   # must be same as in header of msg
+
+subscriber_msg_queue_size: 8
+
+publisher_topic_prefix: /sensor/radar_gen5/location_pointcloud
+publisher_msg_queue_size: 10

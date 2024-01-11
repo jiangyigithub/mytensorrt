@@ -1,0 +1,15 @@
+# Radar configuration
+/radar_ns:
+   radar_manager_ros:
+      ros__parameters:
+         msg_queue_size: 1
+         publisher_topic_robs: /sensors/radar_gen5/radar_manager_gen5/RadarOutputROB2
+         desired_freq_min: 15.0
+         desired_freq_max: 30.0
+         freq_tol: 0.1
+         device_type        : "radar_gen5_plus"
+         device_position    : "radar_01_01"
+         sw_revision        : "BJEV_N60_BL09_V2"
+         ip_address         : "192.168.1.2"
+         daq_list_config    : "daq_list_bjev_n60_bl09_v2.txt"
+         port               : 5555

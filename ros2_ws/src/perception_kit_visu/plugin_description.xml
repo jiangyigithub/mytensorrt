@@ -1,0 +1,14 @@
+<library path="perception_kit_visu"> <!-- lib/lib -->
+
+  <class name="perception_kit_visu/DynamicObjectsDisplay"
+        type="perception_kit_visu::DynamicObjectsDisplay"
+        base_class_type="rviz_common::Display">
+    <description>
+        Display dynamic object properties
+    </description>
+    <message_type>
+        perception_kit_msgs/msg/Objects
+    </message_type>
+  </class>
+
+</library>

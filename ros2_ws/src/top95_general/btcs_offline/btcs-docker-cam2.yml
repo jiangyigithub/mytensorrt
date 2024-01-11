@@ -1,0 +1,34 @@
+version: '2.3'
+
+services:
+    btcs:
+        image: btcs:1.0.0.274
+        restart: always
+        network_mode: host
+        privileged: true
+        environment:
+            - LANG=en_US.UTF-8
+            - BTCS_DOMAIN_ID=0
+            - BTCS_LOG_FILTER=
+            - ROS_DISCOVERY_SERVER        
+            - CUDA_VISIBLE_DEVICES=1
+        volumes:
+            - /home/server/ros2_ws/install/top95_general/share/top95_general/config/btcs_offline/cam2_south_btcs.json:/etc/trs/settings.json:ro
+            
+            - /usr/bin/nvidia-smi:/usr/bin/nvidia-smi
+              # CUDA
+            - /usr/lib/x86_64-linux-gnu/libcuda.so:/usr/lib/x86_64-linux-gnu/libcuda.so
+            - /usr/lib/x86_64-linux-gnu/libcuda.so.1:/usr/lib/x86_64-linux-gnu/libcuda.so.1
+            - /usr/lib/x86_64-linux-gnu/libcuda.so.465.19.01:/usr/lib/x86_64-linux-gnu/libcuda.so.465.19.01
+              # Video decoder
+            - /usr/lib/x86_64-linux-gnu/libnvcuvid.so.1:/usr/lib/x86_64-linux-gnu/libnvcuvid.so.1
+            - /usr/lib/x86_64-linux-gnu/libnvcuvid.so.465.19.01:/usr/lib/x86_64-linux-gnu/libnvcuvid.so.465.19.01
+              # Management library
+            - /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1:/usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1
+            - /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.465.19.01:/usr/lib/x86_64-linux-gnu/libnvidia-ml.so.465.19.01
+              # Optical Flow
+            - /usr/lib/x86_64-linux-gnu/libnvidia-opticalflow.so.1:/usr/lib/x86_64-linux-gnu/libnvidia-opticalflow.so.1
+            - /usr/lib/x86_64-linux-gnu/libnvidia-opticalflow.so.465.19.01:/usr/lib/x86_64-linux-gnu/libnvidia-opticalflow.so.465.19.01
+              # CUDA assembler
+            - /usr/lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.1:/usr/lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.1
+            - /usr/lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.465.19.01:/usr/lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.465.19.01

@@ -1,0 +1,18 @@
+id: road reflex ghost target suppression test
+<<: *add_dimension_from_file road_reflex_occurences_srv.yml
+parameter_path: $(find radar_object_tracking)/ts2_config
+launchfile_path: $(find radar_object_tracking)/launch
+execute:
+  - id: radar_processing
+    cmd: roslaunch ${task:launchfile_path}/radar_simple.launch bag:="${task:bag_filename}"
+    record:
+      - /perception/radar_gen5/tracks
+        /tf_static
+        /tf
+        /clock
+metrics:
+  - id: count_radar_ghost_target_regions
+    cmd: ${task:parameter_path}/bin/count_ghost_target_occurences.py
+    free_regions_range: ${task:free_regions_range}
+    expected_fa: ${task:expected_fa}
+    obj_pexist_thresh: ${task:obj_pexist_thresh}

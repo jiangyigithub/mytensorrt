@@ -1,0 +1,10 @@
+<launch>
+  <arg name="radar_locations_decoder_params" default="$(find radar_locations_decoder_gen5_ros)/params/radar_locations_decoder_shuttle_params.yaml" />
+
+  <!-- <remap from="radar_objects_decoder_gen5/RadarOutputROB2" to="radar_manager_gen5/RadarOutputROB2"/> -->
+  <remap from="radar_objects_decoder_gen5/RadarOutputROB2" to="RadarOutputROB2"/>
+
+  <node name="radar_locations_decoder_gen5" pkg="radar_locations_decoder_gen5_ros" type="radar_locations_decoder_gen5_ros" output="screen">
+    <rosparam command="load" file="$(arg radar_locations_decoder_params)"/>
+  </node>
+</launch>

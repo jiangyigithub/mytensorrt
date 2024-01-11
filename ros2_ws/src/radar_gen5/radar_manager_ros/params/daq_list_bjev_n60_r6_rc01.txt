@@ -1,0 +1,7 @@
+# Radar DAQ configuration. Each daq list has one event channel and a config file for addresses/data sizes
+# format:
+# <name> <params_file> <event_channel>
+#
+mBA1AD3D8 bjev_n60_r6_rc01_locations.txt 0x67
+core0_t20 bjev_n60_r6_rc01_odometry_params.txt 0x02
+#

@@ -1,0 +1,12 @@
+<launch>
+
+   <param name="/radar_manager/radar_pkgpath" value="$(find radar_manager_ros)"/>
+   <arg name="devices_config" default="$(find radar_manager_ros)/params/radar_gen5_plus_front_config.yaml" />
+   <arg name="radar_manager_params" default="$(find radar_manager_ros)/params/radar_manager_example_params.yaml" />
+
+   <node name="radar_manager" pkg="radar_manager_ros" type="radar_manager_ros" output="screen" launch-prefix="valgrind --leak-check=full">
+    <rosparam command="load" file="$(arg radar_manager_params)"/>
+    <rosparam command="load" file="$(arg devices_config)"/>
+   </node>
+
+</launch>

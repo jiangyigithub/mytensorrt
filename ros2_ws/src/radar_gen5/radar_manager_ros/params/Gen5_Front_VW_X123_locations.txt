@@ -1,0 +1,14 @@
+#Revision and Compiletime are checked against radar ECU to confirm correct software. Use '=' after keyword. Whitespaces count. Do not put whitespace after the "=" or after the string sequence!!!
+#The strings in the software to compare to the Revision and CompileTime strings below will automatically take the size of the strings below.
+# Start of string addresses are not always the same. This must be looked up! (If \n is read, string in ECU will not display in error message)
+
+SW_Version_string=undefined
+Build_Info_string=undefined
+
+# first argument: packet name
+# second argument: size to be looked up in .a2l / canape as the difference of adress location to the next packet
+
+# _mempool_dspRunnable_m_dspLocationList_out.TMemPool._._
+_mempool_dspRunnable_m_dspLocationList_out	0xB0027F40 0x28E0  false 0 false
+
+

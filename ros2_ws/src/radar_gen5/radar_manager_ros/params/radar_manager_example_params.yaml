@@ -1,0 +1,5 @@
+msg_queue_size: 1
+publisher_topic_robs: /radar_manager/RadarOutputROB2
+desired_freq_min: 15.0
+desired_freq_max: 30.0
+freq_tol: 0.1

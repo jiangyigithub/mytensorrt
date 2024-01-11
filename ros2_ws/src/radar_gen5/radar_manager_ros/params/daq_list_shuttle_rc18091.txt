@@ -1,0 +1,7 @@
+# Radar DAQ configuration. Each daq list has one event channel and a config file for addresses/data sizes
+# format: 
+# <name> <params_file> <event_channel> 
+# 
+locations Gen5_Corner_PLRearCorner_PI_1809_1_RearLeft_locations.txt 0x27
+objects Gen5_Corner_PLRearCorner_PI_1809_1_RearLeft_objects.txt 0x17
+#

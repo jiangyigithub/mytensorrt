@@ -1,0 +1,13 @@
+# format:
+# <name> <address> <size> <diagnostic_active> <required_num_nonzero> <filter_duplication>
+# name:                   signal name (String)
+# address:                start address of this signal (Hex)
+# size:                   size of this message (Hex)
+# diagnostic_active:      switch on/off diagnostic updater on this message (Bool)
+# required_num_nonzero:   minimum required non zero bytes in message (Decimal)
+# filter_duplication:     Turn on to filter consecutive duplicate messages (Bool)
+#
+
+# _g_PerHv_HV_PerPmeRunnable_PerPmeRunnable_m_hostVehHistPort_out_local.TChangeableMemPool._._._m_arrayPool._1_
+
+_m_hostVehHistPort_out 0x70028788 0x149 true 0 false

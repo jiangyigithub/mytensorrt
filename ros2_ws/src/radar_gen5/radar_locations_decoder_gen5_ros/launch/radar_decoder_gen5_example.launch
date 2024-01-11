@@ -1,0 +1,12 @@
+<launch>
+
+  <arg name="debug" default="false"/>
+  <arg name="launch_param" value="gdb -ex run --args" if="$(arg debug)"/>
+  <arg name="launch_param" value="" unless="$(arg debug)"/>
+
+  <arg name="radar_locations_decoder_params" default="$(find radar_locations_decoder_gen5_ros)/params/radar_locations_decoder_example_params.yaml" />
+
+  <node name="radar_locations_decoder_gen5" pkg="radar_locations_decoder_gen5_ros" type="radar_locations_decoder_gen5_ros" output="screen" launch-prefix="$(arg launch_param)">
+    <rosparam command="load" file="$(arg radar_locations_decoder_params)"/>
+  </node>
+</launch>

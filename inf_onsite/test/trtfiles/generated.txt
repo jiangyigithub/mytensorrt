@@ -1,0 +1,3 @@
+cd /usr/src/tensorrt/bin
+sudo ./trtexec --onnx=/home/icv/Edward/inf_sense/test/onnxfiles/3d_det.onnx --saveEngine=/home/icv/Edward/inf_sense/test/trtfiles/3d_det_engine.trt --noTF32
+sudo chmod 777 /home/icv/Edward/inf_sense/test/trtfiles/3d_det_engine.trt

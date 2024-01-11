@@ -1,0 +1,41 @@
+#Revision and Compiletime are checked against radar ECU to confirm correct software. Use '=' after keyword. Whitespaces count. Do not put whitespace after the "=" or after the string sequence!!!
+#The strings in the software to compare to the Revision and CompileTime strings below will automatically take the size of the strings below.
+# Start of string addresses are not always the same. This must be looked up! (If \n is read, string in ECU will not display in error message)
+
+SW_Version_string=undefined
+Build_Info_string=undefined
+
+
+# Start address of the LocationInterface
+#   First signal should be "_g_DspRunnable_dsp_m_LocationInterface_out_local.TMemPool._._"
+#   The first members of the LocationList that are needed are "m_referenceCounter" and "m_sequenceNumber"
+#
+# End address of the LocationInterface
+#   The signal at this address should be "_g_DspRunnable_dsp_m_LocationInterface_out_local._m_memPoolId"
+#
+# Size of the LocationInterface
+#   = sizeof(Dsp::LocationInterface) = sizeof(location)*num_loc + sizeof(sensingStateData) + some counters
+
+_mempool_dspRunnable_m_dspLocationList_out	0xB0095C3C 0x30F8
+# 0xB0095C40 30F4
+
+# messages for radar road signature
+# only take the first 4002 entries of the "payload" array
+
+_mempool_g_PerSppRrsRunnable_m_bap_response_port_out 0xB00837F2 0xFA2
+
+
+# mu odometry vector containing 8 float_32t entries (m_muVector): d_x, d_y, v_x, v_y, a_x, a_y, d_yaw, v_yaw
+_mempool_odometry_mu_vector 0x60020690 0x20
+
+# odometry variances and covariances:
+# 8 first float32_t entries are variances (m_stdVector)
+# 28 next float32_t entries are covariances (m_corrVector)
+# all together: 144 bytes
+_mempool_odometry_var_covar 0x600206B0 0x90
+
+# current estimated mounting pose of radar sensor
+# muVector contains 5 float_32t entries: [Position, Angle] = [x, y, z, yaw, pitch]
+# Signal: _g_VW_PER_per_sppRLocGen5Runnable1R1V_PerSppRLocGen5Runnable1R1V_m_radarSensorPropertiesPort_out_local.TMemPool._._._m_arrayPool._0_._elem._m_currentMounting._m_vectorCovariancePair._m_muVector
+_mempool_current_radar_mounting_pose 0xB0064EF0 0x14
+

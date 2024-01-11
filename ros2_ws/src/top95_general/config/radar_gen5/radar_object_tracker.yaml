@@ -1,0 +1,28 @@
+/**:
+#  radar_object_tracking_node:
+    ros__parameters:
+
+      # The following map modes are supported:
+      # * lane - pass everything which is on or close to the lane
+      # * none - do not filter by map
+      # * (static) - behaves like lane
+      map_mode: "none"
+
+      # # The layered map classifier internally constructs a grid to conduct a 'point in region' lookup. This parameter
+      # # specifies the grid size. If you have a large grid, you can increase this value
+      grid_resolution: 1.5
+
+      # # The input topics of the node
+      # ego_motion_topic: ""
+      radar_tracking_sensor_0: "/radar_decoder_gen5/location_interface"
+      #"/radar_decoder_gen5/location_interface"
+      # radar_tracking_sensor_0: "/LocationInterface"
+      #"/sensors/radar_gen5/radar_locations_decoder_gen5/location_interface"
+
+      # # frame setup
+      #radar_tracking_sensor_frame_0: "radar_02_01"
+      # target_frame: "layered_map_enu"
+      target_frame: "radar_01_01"
+
+      # # asso distance gate
+      min_range_gate: 4

@@ -1,0 +1,34 @@
+1. enable the debug trace
+    export GST_DEBUG="GST_TRACER:7"
+    export GST_TRACERS="latency(flags=element+pipeline)"
+    export GST_DEBUG_FILE=latency.log
+
+export NVDS_ENABLE_COMPONENT_LATENCY_MEASUREMENT=1
+
+source /home/icv/Edward/test/sample/install/perception_kit_msgs/share/perception_kit_msgs/local_setup.bash 
+source /home/icv/Edward/04_tools/analysis_tool/ros2_ws/install/local_setup.bash 
+source /home/icv/Edward/04_tools/analysis_tool/ros2_ws/install/adma_msgs/share/adma_msgs/local_setup.bash 
+
+
+
+
+python3.8 ds_3d_det_ros_main.py -i  file:////home/icv/Edward/tools/test_pic_video.mp4
+
+
+Note:
+    1. IP settings 
+        192.168.23.100
+        255.255.255.224
+        192.168.23.97
+
+        camera ip: 192.168.23.104
+
+source ~/workspaces/ros2_ws/install/perception_kit_msgs/share/perception_kit_msgs/local_setup.bash
+source ~/workspaces/ros2_ws/install/adma_msgs/share/adma_msgs/local_setup.bash
+source /opt/ros/rolling/setup.bash
+
+python3 ds_3d_det_ros_main.py -i  file:////home/icv/Edward/tools/test_pic_video.mp4
+
+
+ros2 bag record -s mcap -a
+ros2 bag record -s mcap /mc_obj_det /icv_cp_image

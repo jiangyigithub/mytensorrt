@@ -1,0 +1,10 @@
+# Radar DAQ configuration. Each daq list has one event channel and a config file for addresses/data sizes
+# format:
+# <name> <params_file> <event_channel>
+#
+mBA1AD3D8 vw_x391_locations.txt 0x6e
+core1_bg vw_x391_odometry_and_mount_pose.txt 0x08
+m53CCE565 vw_x391_4k_blocks.txt 0x135
+core0_t20 vw_x391_odometry_params.txt 0x02
+mB6BE5E0E vw_x391_odometry_history_buffer.txt 0x132
+#

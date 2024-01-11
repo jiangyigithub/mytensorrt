@@ -1,0 +1,21 @@
+id: track lifetime test
+<<: *add_dimension_from_file ringstreet_objects_srv.yml
+parameter_path: $(find radar_object_tracking)/ts2_config
+launchfile_path: $(find radar_object_tracking)/launch
+execute:
+  - id: radar_processing
+    cmd: roslaunch ${task:launchfile_path}/radar_simple.launch bag:="${task:bag_filename}"
+    record:
+      - /perception/radar_gen5/tracks
+        /tf_static
+        /tf
+        /clock
+metrics:
+  - id: analyse_track_lifetimes
+    cmd: ${task:parameter_path}/bin/analyse_track_lifetimes.py
+    obj_pexist_thresh: ${task:obj_pexist_thresh}
+    short_lifetime_count: ${task:short_lifetime_count}
+    expected_lifetime: ${task:expected_lifetime}
+    long_track_lifetime_thresh: ${task:long_track_lifetime_thresh}
+    expected_long_track_lifetime: ${task:expected_long_track_lifetime}
+    expected_short_tracks_count: ${task:expected_short_tracks_count}

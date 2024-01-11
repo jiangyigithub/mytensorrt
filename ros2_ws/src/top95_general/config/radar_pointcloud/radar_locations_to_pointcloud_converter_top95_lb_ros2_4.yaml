@@ -1,0 +1,10 @@
+/**:
+   #radar_locations_to_pointcloud_converter_ros:
+      ros__parameters:
+        subscriber_topics: [/radar_decoder_gen5/location_interface] #[/sensors/radar_gen5/radar_locations_decoder_gen5/location_interface] #[/sensors/radar_gen5/radar_locations_decoder_gen5/location_interface] [/radar_decoder_gen5/location_interface] [/radar_decoder_gen5/location_interface]#radar_gen5_plus_front
+      #   subscriber_topics: [/LocationInterface] #[/sensors/radar_gen5/radar_locations_decoder_gen5/location_interface] #[/sensors/radar_gen5/radar_locations_decoder_gen5/location_interface] [/radar_decoder_gen5/location_interface] [/radar_decoder_gen5/location_interface]#radar_gen5_plus_front 
+        subscriber_frame_id: [radar_04_01] #[radar_gen5_plus_front] [layered_map_enu]
+        subscriber_msg_queue_size: 8
+
+        publisher_topic_prefix: /sensors/radar_04_01/radar_locations_decoder_gen5/location_pointcloud
+        publisher_msg_queue_size: 10

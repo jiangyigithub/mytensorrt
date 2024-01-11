@@ -1,0 +1,20 @@
+#Revision and Compiletime are checked against radar ECU to confirm correct software. Use '=' after keyword. Whitespaces count. Do not put whitespace after the "=" or after the string sequence!!!
+#The strings in the software to compare to the Revision and CompileTime strings below will automatically take the size of the strings below.
+# Start of string addresses are not always the same. This must be looked up! (If \n is read, string in ECU will not display in error message)
+
+SW_Version_string=undefined
+Build_Info_string=undefined
+
+
+# 0x5000E238 Start address of the locationList
+#   First signal should be "_mempool_dspRunnable_m_dspLocationList_out._"
+#   The first members of the LocationList that are needed are "m_referenceCounter" and "m_sequenceNumber"
+#
+# 0x50010B18 End address of the locationList
+#   The signal at this address should be "_mempool_dspRunnable_m_dspLocationList_out_m_memPoolId"
+#
+# 0x28E0 Size of the locationList
+#   = sizeof(Dsp::LocationInterface) = sizeof(location)*num_loc + sizeof(sensingStateData) + some counters
+#   0x5000E238 + 0x28E0 = 0x50010B18
+
+_mempool_dspRunnable_m_dspLocationList_out	0x5000E238 0x28E0

@@ -1,0 +1,64 @@
+#Revision and Compiletime are checked against radar ECU to confirm correct software. Use '=' after keyword. Whitespaces count. Do not put whitespace after the "=" or after the string sequence!!!
+#The strings in the software to compare to the Revision and CompileTime strings below will automatically take the size of the strings below.
+# Start of string addresses are not always the same. This must be looked up! (If \n is read, string in ECU will not display in error message)
+
+SW_Version_string=undefined
+Build_Info_string=undefined
+
+
+# Start address of the LocationInterface
+#   First signal should be "_g_DspRunnable_dsp_m_LocationInterface_out_local.TChangeableMemPool._._._m_arrayPool._1_._elem"
+#   The first members of the LocationList that are needed are "m_referenceCounter" and "m_sequenceNumber"
+#
+# End address of the LocationInterface
+#   The signal at this address should be "_g_DspRunnable_dsp_m_LocationInterface_out_local._m_memPoolId"
+#
+# Size of the LocationInterface
+#   = sizeof(Dsp::LocationInterface) = sizeof(location)*num_loc + sizeof(sensingStateData) + some counters
+
+_mempool_dspRunnable_m_dspLocationList_out	0xB005C9C0 0x30F8
+
+
+# messages for radar road signature
+# only take the first 4002 entries of the "payload" array
+# Signal: _g_VW_PER_PerSppRrs_PerSppRrsRunnable_m_bap_response_port_out_local.TChangeableMemPool._._._m_arrayPool._1_._elem._m_payload._m_value._0_
+
+_mempool_g_PerSppRrsRunnable_m_bap_response_port_out 0xB009F792 0xFA2
+
+
+# timestamp of odometry data (vfc::uint32_t) in normalized Units [s], Norm: (Norm_tAbsUL_ul) 
+# Signal: _g_DACore_PER_PerSpdRunnable_PerSpdRunnable_m_syncInfoPort_out_local.TChangeableMemPool._._._m_arrayPool._0_._elem._measurementSyncInfos.TList._._m_nodeAlloc._m_memPool._m_storage._m_vals._v1._0_._m_value._m_timeStamp._m_timeStamp
+
+_mempool_odometry_timestamp 0x6001F640 0x4
+
+# mu odometry vector containing 8 float_32t entries (m_muVector): d_x, d_y, v_x, v_y, a_x, a_y, d_yaw, v_yaw
+# Signal: _g_DACore_PER_PerSpdRunnable_PerSpdRunnable_m_syncInfoPort_out_local.TChangeableMemPool._._._m_arrayPool._0_._elem._measurementSyncInfos.TList._._m_nodeAlloc._m_memPool._m_storage._m_vals._v1._0_._m_value._m_predHvmFor._m_vectorCovariancePair._m_muVector._m_data.TCArray._._m_value._0_
+
+_mempool_odometry_mu_vector 0x6001F64C 0x20
+
+
+# odometry variances and covariances:
+# 8 first float32_t entries are variances (m_stdVector)
+# 28 next float32_t entries are covariances (m_corrVector)
+# Signal: _g_DACore_PER_PerSpdRunnable_PerSpdRunnable_m_syncInfoPort_out_local.TChangeableMemPool._._._m_arrayPool._0_._elem._measurementSyncInfos.TList._._m_nodeAlloc._m_memPool._m_storage._m_vals._v1._0_._m_value._m_predHvmFor._m_vectorCovariancePair._m_stdVector._m_data.TCArray._._m_value._0_
+# all together: 144 bytes
+
+_mempool_odometry_var_covar 0x6001F66C 0x90
+
+
+# current estimated mounting pose of radar sensor
+# muVector contains 5 float_32t entries: [Position, Angle] = [x, y, z, yaw, pitch]
+# Signal: _g_VW_PER_per_sppRLocRunnable_PerSppRLocRunnable_m_radarSensorPropertiesPort_out_local.TChangeableMemPool._._._m_arrayPool._0_._elem._m_currentMounting._m_vectorCovariancePair._m_muVector._m_data.TCArray._._m_value._0_
+
+_mempool_current_radar_mounting_pose 0x60028F68 0x14
+
+
+# Runtimes of RRS and Per components on the radar for debugging purposes
+# the important entries are:
+# Per runtime at  +0x8 (uint32 in 10 nanoseconds)
+# Per cycle nr at +0xC (uint32)
+# RRS runtime at  +0x48 (uint32 in 10 nanoseconds)
+# RRS cycle nr at +0x4C (uint32)
+# Signal: _g_PERTime
+
+_mempool_component_runtimes 0xB0042F84 0x80

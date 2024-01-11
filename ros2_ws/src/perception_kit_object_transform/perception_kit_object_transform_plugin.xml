@@ -1,0 +1,9 @@
+<library path="lib/libperception_kit_object_transform">
+  <class name="perception_kit_object_transform/ObjectTransform"
+         type="perception_kit::object_transform::ObjectTransform"
+         base_class_type="nodelet::Nodelet">
+  <description>
+  This nodelet takes a object and converts its to a given target frame.
+  </description>
+  </class>
+</library>
