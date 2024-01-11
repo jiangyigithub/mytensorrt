@@ -414,5 +414,29 @@ tensor: float32[batch_size,3,1080,1920]
 https://github.com/cyrusbehr/tensorrt-cpp-api/blob/main/src/engine.cpp
 config->setFlag(BuilderFlag::kFP16);
 
+### new docker container
+sudo docker run --gpus all --net=host -d -it -v /home/icv/workspaces/:/home/icv/workspaces/ --shm-size=64g --name inf-docker nvcr.io/nvidia/deepstream:6.4-triton-multiarch
+sudo docker exec -it inf-docker /bin/bash
+
+sudo docker run --gpus all --net=host -d -it -v /home/icv/workspaces/:/home/icv/workspaces/ --shm-size=64g --name rt-docker nvcr.io/nvidia/pytorch:21.08-py3
+sudo docker exec -it rt-docker /bin/bash
+
+nvidia-smi
+
+sudo trtexec --onnx=/home/icv/workspaces/inf_onsite/test/onnxfiles/3d_det_all.onnx --saveEngine=/home/icv/workspaces/inf_onsite/test/trtfiles/3d_det_engine_all_3090_fp16.trt --fp16
+
+### install python-tensorrt
+ERROR: Could not build wheels for tensorrt, which is required to install `pyproject.toml-based` projects
+pip install nvidia-pyindex
+pip install nvidia-tensorrt
+https://zhuanlan.zhihu.com/p/607601799?utm_id=0
+https://developer.download.nvidia.cn/compute/redist/nvidia-tensorrt/nvidia_tensorrt-8.4.3.1-cp310-none-linux_x86_64.whl
+
+### engine version and tensorrt env
+https://www.codenong.com/js3c2fb7b45cc7/
+    context = engine.create_execution_context()
+AttributeError: 'NoneType' object has no attribute 'create_execution_context'
 
 
+41M Jan 11 09:25 3d_det_engine_all_3090_fp16.trt
+41M Jan 11 09:23 your_model_fp16.trt
