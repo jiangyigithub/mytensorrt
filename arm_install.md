@@ -341,5 +341,9 @@ config->addOptimizationProfile(profile);
 name: input
 tensor: float32[batch_size,3,1080,1920]
 
+### pecision set in C++ tensorrt
+https://github.com/cyrusbehr/tensorrt-cpp-api/blob/main/src/engine.cpp
+config->setFlag(BuilderFlag::kFP16);
+
 
 
