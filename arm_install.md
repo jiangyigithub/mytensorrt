@@ -47,6 +47,75 @@ https://catalog.ngc.nvidia.com/orgs/nvidia/containers/deepstream-l4t/tags
 https://github.com/NVIDIA-AI-IOT/deepstream_dockers/blob/main/jetson/ubuntu_base_devel/Dockerfile
 https://github.com/NVIDIA-AI-IOT/ros2_deepstream/blob/main/docker/dockerfile.ros.eloquent.deepstream
 
+### docker file example 
+https://sourcecode.socialcoding.bosch.com/projects/RIX3/repos/unifiedvisibilitysw/browse
+```Dockerfile
+FROM zombbie/cuda11.1-cudnn8-ubuntu20.04:v1.0
+
+
+ENV ACCEPT_EULA=Y
+
+RUN apt-get update &&\
+    apt-get install -y unzip &&\
+    apt-get install -y lsb-core &&\
+    apt-get install -y curl &&\
+    apt-get autoclean &&\
+    rm -rf /var/lib/apt/lists/*
+
+# install ros
+# RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' && \
+RUN sh -c '. /etc/lsb-release && echo "deb http:/mirrors.tuna.tsinghua.edu.cn/ros/ubuntu/ $DISTRIB_CODENAME main" > /etc/apt/sources.list.d/ros-latest.list' && \
+    curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add - &&\
+    apt-get -y update &&\
+    apt-get -y --no-install-recommends install ros-noetic-desktop &&\
+    echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc &&\
+    apt-get autoclean &&\
+    rm -rf /var/lib/apt/lists/*
+
+RUN apt-get -y update &&\ 
+    pip3 install rosdepc &&\
+    # rosdepc init && rosdepc update &&\
+    apt-get -y install  python3-rosinstall python3-rosinstall-generator python3-wstool build-essential &&\
+    apt-get install -y ros-noetic-octomap-ros &&\
+    apt-get install -y ros-noetic-grid-map &&\
+    apt-get autoclean &&\
+    rm -rf /var/lib/apt/lists/*
+
+# setting libtorch
+WORKDIR /catkin_ws/src/unifiedvisibilitysw
+
+RUN wget -q https://download.pytorch.org/libtorch/cu111/libtorch-cxx11-abi-shared-with-deps-1.9.1%2Bcu111.zip && \
+    unzip libtorch-cxx11-abi-shared-with-deps-1.9.1+cu111.zip && \
+    rm libtorch-cxx11-abi-shared-with-deps-1.9.1+cu111.zip
+
+RUN mv ./libtorch /usr/local/
+
+ENV LD_LIBRARY_PATH=/usr/local/libtorch:$LD_LIBRARY_PATH \
+     PATH=/usr/local/libtorch:$PATH
+
+COPY ./ ./
+
+RUN chmod +x entrypoints.sh
+
+ENTRYPOINT ["/catkin_ws/src/unifiedvisibilitysw/entrypoints.sh"]
+```
+
+```bash  entrypoints.sh
+#!/bin/bash
+
+cd /catkin_ws/
+
+source ~/.bashrc
+source /opt/ros/noetic/setup.bash
+
+catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3 -DCMAKE_BUILD_TYPE=Release
+
+source /catkin_ws/devel/setup.bash
+
+# 运行 catkin_ws 中的 launch 节点（示例命令，需要替换为实际的启动命令）
+roslaunch univiz  univiz.launch
+```
+
 ## ROS2 env
 http://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
 sudo update-locale LANG=C.UTF-8
