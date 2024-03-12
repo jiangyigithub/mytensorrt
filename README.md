@@ -365,3 +365,7 @@ $ watch –n 1 -d nvidia-smi
 resume-model 180
 6*1488 
 如果内存报错，改batch size(memory error)
+
+`DAIR数据集` 中label的方位角度：-pi~pi --> 0~2*pi
+
+可视化画框visualize.py
