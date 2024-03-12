@@ -27,9 +27,9 @@ int main() {
         parser->parseFromFile(onnx_filename.c_str(), static_cast<int32_t>(nvinfer1::ILogger::Severity::kWARNING));
 
         auto config = std::unique_ptr<nvinfer1::IBuilderConfig>(builder->createBuilderConfig());
-        config->setFlag(nvinfer1::BuilderFlag::kFP16);
+        config->setFlag(nvinfer1::BuilderFlag::kFP16); // 精度设置
         nvinfer1::IOptimizationProfile* profile = builder ->createOptimizationProfile();
-        profile->setDimensions("input", nvinfer1::OptProfileSelector::kMIN, nvinfer1::Dims4{1, 3, 1080, 1920});
+        profile->setDimensions("input", nvinfer1::OptProfileSelector::kMIN, nvinfer1::Dims4{1, 3, 1080, 1920}); // 动态网络输入
         profile->setDimensions("input", nvinfer1::OptProfileSelector::kOPT, nvinfer1::Dims4{1, 3, 1080, 1920});
         profile->setDimensions("input", nvinfer1::OptProfileSelector::kMAX, nvinfer1::Dims4{1, 3, 1080, 1920});
         config->addOptimizationProfile(profile);
