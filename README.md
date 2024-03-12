@@ -369,3 +369,5 @@ resume-model 180
 `DAIR数据集` 中label的方位角度：-pi~pi --> 0~2*pi
 
 可视化画框visualize.py
+
+python3.8 pth2onnx.py- --config config/config.yaml
