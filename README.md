@@ -350,3 +350,18 @@ NvDsInferObjectDetectionInfo_4decode 自定义数据类型
 
 ### ROI filter
 精度不好的区域，直接删掉目标
+
+# 2014/03/12 train hand-on
+### ground plane
+地面方程
+
+### 
+python3.8  train_val.py --config config/config.yaml
+
+It monitors your GPU every second, refreshing and tracking the output itself for each second.
+
+$ watch –n 1 -d nvidia-smi
+
+resume-model 180
+6*1488 
+如果内存报错，改batch size(memory error)
