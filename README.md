@@ -372,9 +372,11 @@ resume-model 180
 
 python3.8 pth2onnx.py- --config config/config.yaml
 
-### yolo V7
-感受野（Receptive Field）
-rop3d数据集转化为coco 数据集
-anchor 3种
+### yolo V7 (anchor-based  一阶段算法)
+感受野（Receptive Field）anchor 3种
+
 迁移训练
+rop3d数据集转化为coco 数据集
+
+
 yolo 3d 与2d的关系
