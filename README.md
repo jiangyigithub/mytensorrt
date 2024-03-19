@@ -292,7 +292,7 @@ https://blog.csdn.net/MengYa_Dream/article/details/120233806?spm=1001.2014.3001.
 ## 训练精度 fp64, 推理 fp16
 
 # deployment
-## .ptj-->.onnx-->.trt
+## .pth-->.onnx-->.trt
 ##  后处理，解析输出
 
 # deepstream
