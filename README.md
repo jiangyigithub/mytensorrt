@@ -374,6 +374,7 @@ resume-model 180
 python3.8 pth2onnx.py- --config config/config.yaml
 
 ### yolo V7 (anchor-based  一阶段算法)
+(原来的算法是anchor-free 也是一阶段算法)
 感受野（Receptive Field）anchor 3种
 
 迁移训练
