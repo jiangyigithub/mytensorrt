@@ -261,6 +261,7 @@ neck
 
 ## 收敛曲线
 P R 曲线
+https://zhuanlan.zhihu.com/p/104917232
 
 ## 数据集
 DAIR数据集 https://thudair.baai.ac.cn/rope
