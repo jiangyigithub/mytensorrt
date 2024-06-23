@@ -408,7 +408,8 @@ config->addOptimizationProfile(profile);
 
 ### model input
 name: input
-tensor: float32[batch_size,3,1080,1920]
+tensor: float32[batch_size,3,1080,1920]    
+`batch_size: 6` -->baseline_methods\config\config.yaml
 
 ### pecision set in C++ tensorrt
 https://github.com/cyrusbehr/tensorrt-cpp-api/blob/main/src/engine.cpp
