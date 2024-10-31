@@ -383,3 +383,5 @@ rop3d数据集转化为coco 数据集
 
 
 yolo 3d 与2d的关系
+然后还做了yolo 的2d到3d的转换，就改了head，修改了loss函数，还改了一下dataload那个函数，因为要回归到3d信息
+
