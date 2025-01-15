@@ -3,7 +3,7 @@
 
 ## understand the code for training
 1. how to train the model
-src/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/README.md  --> `train_val.py` 
+src/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/README.md  --> train_val.py 
 
 2. convert .pth to .onnx
 src/camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/pth2onnx.py --> onnx
@@ -26,7 +26,7 @@ https://sourcecode.socialcoding.bosch.com/projects/RIX3/repos/infrastructure3dob
         self.b_x = self.P[0, 3] / (-self.f_u)  # relative
         self.b_y = self.P[1, 3] / (-self.f_v)
 
-5. weight file -->  checkpoint 
+5. weight file -->  checkpoint
 load_checkpoint(model=model,
                     optimizer=None,
                     filename=cfg['tester']['checkpoint'],
@@ -56,6 +56,7 @@ sinkpad= streammux.get_request_pad(padname)  -- > single stream
 
 3. .so file generate
 camera/monocular_3d/deepstream/inference_script/inference_parser/monocam_det/nvdsinfer_monocular_cam_3d_det/example_app.cpp  --> parse output layout
+`parse-bbox-func-name=NvDsInferParseCustomResnet`
 
 "primary-pgie" section
 model-engine-file = /home/icv/Edward/inf_sense/test/trtfiles/docker_3d_det_engine.trt
@@ -75,7 +76,7 @@ https://zhuanlan.zhihu.com/p/112246942
 7. generate .trt file
 https://docs.nvidia.com/deeplearning/tensorrt/quick-start-guide/index.html#export-from-pytorch
 
-8. (u,v,Zc) --> (Xw,Yw,Zw) 像素坐标和深度转化为相机坐标系
+8. (u,v,Zc) --> (Xw,Yw,Zw)
 
 9. outputs = model(inputs) --> raw output from model  --> `extract_dets_from_outputs`
 (camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/inference.py)
@@ -83,7 +84,7 @@ https://docs.nvidia.com/deeplearning/tensorrt/quick-start-guide/index.html#expor
   dets = extract_dets_from_outputs(outputs=outputs,
                                     K=test_loader.dataset.max_objs)
 
-10. bag debug info
+10. bag debug info, fill into useless info,such as `width_variance`
                 # debug info
                 # this data range is error beside yaw & yaw rate
                 obj_det.width_variance = obj_meta.confidence
@@ -108,7 +109,7 @@ export GST_DEBUG_FILE=latency.log
 source /home/icv/Edward/test/sample/install/perception_kit_msgs/share/perception_kit_msgs/local_setup.bash
 source /home/icv/Edward/04_tools/analysis_tool/ros2_ws/install/local_setup.bash 
 source /home/icv/Edward/04_tools/analysis_tool/ros2_ws/install/adma_msgs/share/adma_msgs/local_setup.bash 
-python3.8 ds_3d_det_ros_main.py -i  file:////home/icv/Edward/tools/test_pic_video.mp4
+python3.8 ds_3d_det_ros_main.py -i  file:////home/icv/workspaces/wheel/test_video.mp4
 
 14. `pgie_config.txt`  `custom-lib-path` `model-engine-file`
 In the context of NVIDIA DeepStream and the Primary GIE (General Inference Engine), the `pgie` (Primary GIE) configuration typically includes parameters related to how the deep learning model is used for inference. The specific parameters you've mentioned, `custom-lib-path` and `model-engine-file`, are part of this configuration and are used for specifying custom inference engines and their paths.
@@ -223,166 +224,3 @@ This example does the following:
 8. When you close the application, it stops the pipeline and cleans up resources.
 
 This code demonstrates the core concepts of GStreamer, including creating a pipeline, adding elements, linking them, monitoring the bus, and handling messages. You can customize this code for your specific use case and add more features, such as audio processing, error handling, and user interaction.
-
-# 2024/03/11
-# 训练
-batch size  --> RTX3090 设置为6,与内存有关，一个epoch `batch_size: 6`
-max_epoch: 260
-
-camera/monocular_3d/infrastructure3dobjectdetection/baseline_methods/config/config.yaml
-.pth 权重文件
-resume model --> 断电重新训练
-
-meansize 利用先验知识，比如车长3.5
-
-downsample 训练做`下采样`
-
-(`下采样`的逆运算)
-camera/monocular_3d/deepstream/deepstream-test3/lib/helpers/decode_helper.py (`下采样`的逆运算)
-            # 2d bboxs decoding
-            x = dets[i, j, 2] * info['bbox_downsample_ratio'][i][0]
-            y = dets[i, j, 3] * info['bbox_downsample_ratio'][i][1]
-            w = dets[i, j, 4] * info['bbox_downsample_ratio'][i][0]
-            h = dets[i, j, 5] * info['bbox_downsample_ratio'][i]
-
-##  checkpoint  260 个 epoch，一般去第120个epoch的.pth文件
-## 辅助训练
-`辅助训练` --> camera/monocular_3d/deepstream/deepstream-test3/lib/models/monocon.py （额外的用于训练的HEAD）
-'center2kpt_offset': 16,
-'kpt_heatmap': 8,
-'kpt_heatmap_offset': 2
-
-## 多任务 loss的计算
-
-## 网络结构
-neck
-    backbone='dla34',        
-    neck='DLAUp',  
-
-## 收敛曲线
-P R 曲线
-https://zhuanlan.zhihu.com/p/104917232
-
-## 数据集
-DAIR数据集 https://thudair.baai.ac.cn/rope
-
-## 多卡训练
-self.gpu_ids = list(map(int, cfg['gpu_ids'].split(',')))
-self.model = torch.nn.DataParallel(model).cuda()
-
-## heatmap
-heatmap
-`nms` --> heatmap
-
-xs2d ys2d --> 2D bounding box 中心点
-xs3d xs3d  -->  3D bounding box中心点 （像素坐标系）
-
-locations --> 相机坐标系（把 u,v,depth 转化为 相机坐标系的结果）-->`（u,v,1）*Zc = K*RT*(X,Y,Z,1)`
-       locations = calibs[i].img_to_rect(x3d, y3d, depth).reshape(-1)
-
-## NMS
-NMS（Non-Maximum Suppression，非极大值抑制）
-
-## KD tree 求 深度信息
-       K 内参
-           global RT_augmented
-    global K
-https://blog.csdn.net/MengYa_Dream/article/details/120233806?spm=1001.2014.3001.5506
-（u,v,1）*Zc = K*RT*(X,Y,Z,1)
-
-## 训练精度 fp64, 推理 fp16
-
-# deployment
-## .pth-->.onnx-->.trt
-##  后处理，解析输出
-
-# deepstream
-## .so --> decode 网络的结果
-
-## RTSP流密码文件（$符号的ASCII码为24）  %24% --> $  -->('rtsp://service:Icv%24%241234@192.168.5.72')
-
-## ## extract -- decoder in deepstream
-`dstest3_pgie_config.txt` --> camera/monocular_3d/deepstream/deepstream-test3/dstest3_pgie_config.txt
-
-parse-bbox-func-name
-custom-lib-path
-
-pgie_src_pad_buffer_probe
-
-camera/monocular_3d/deepstream/inference_script/inference_parser/monocam_det/nvdsinfer_monocular_cam_3d_det/example_app.cpp
-NvDsInferParseCustomResnet (std::vector<NvDsInferLayerInfo> const &outputLayersInfo)
-
-## torch::blob 和 nms算法
-`torch::blob`
-
-`nms`
-  heatmap_ts = _nms(heatmap_ts);
-
-### 数据结构问题，自己拼接数据
-NvDsInfer3dObjectDetectionInfo 原始数据类型 `显卡位宽`
-
-NvDsInferObjectDetectionInfo_4decode 自定义数据类型
-
-      objectList.push_back(obj);
-      // obj.left = 12345678.;   // 8 most                    hw      4+4=8
-      // obj.top = 998.123;   // 6 most                       dep
-      // obj.width = 12345678.;   // 8 most                   x3d y3d  4+4=8
-      // obj.height = 5.12345;   // 6 most                    heading
-      // obj.detectionConfidence = 12345678.;   // 8 most     conf l    4+4=8
-
-      auto d_h = object_info_list[i].Size_3d[0];  // to 0.01m 
-      auto d_w = object_info_list[i].Size_3d[1];  // to 0.1 m
-      auto d_l = object_info_list[i].Size_3d[2];  // to 0.1 m
-      obj.left = min(float(1E4*round(min(d_h*1E2,1E3))+round(min(d_w*1E2,1E5))),99999999.f);
-      // obj.left = 99999999.f;
-      int x_3d = object_info_list[i].Xs3d*downsample_ratio;  // to 1 pixel
-      int y_3d = object_info_list[i].Ys3d*downsample_ratio;  // to 1 pixel
-      obj.width = min(float(1E4*round(min(x_3d,int(1E4)))+round(min(y_3d,int(1E4)))),99999999.f);
-
-      ------
-      ###拟运算##
-
-                    obj_det.width = (obj_meta.rect_params.left%1E4)/1E2
-                obj_det.length = int(obj_meta.confidence/1E4)/1E2
-                obj_det.height = int(obj_meta.rect_params.left/1E4)/1E2
-                # obj_det.yaw = obj_meta.rect_params.height+math.pi/2-0.029865
-                obj_det.yaw = obj_meta.rect_params.height # -math.pi/2+0.05
-                obj_det.yaw = -obj_det.yaw+math.pi/2+0.05 # hongye west
-
-### ROI filter
-精度不好的区域，直接删掉目标
-
-# 2014/03/12 train hand-on
-### ground plane
-地面方程
-
-### let train run
-python3.8  train_val.py --config config/config.yaml
-
-It monitors your GPU every second, refreshing and tracking the output itself for each second.
-
-$ watch –n 1 -d nvidia-smi
-https://linuxconfig.org/monitoring-nvidia-gpu-usage-on-ubuntu
-
-### 为什么现在的模型从180个epoch开始训练
-resume-model 180
-6*1488 
-如果内存报错，改batch size(memory error)
-
-`DAIR数据集` 中label的方位角度：-pi~pi --> 0~2*pi
-
-可视化画框visualize.py
-
-python3.8 pth2onnx.py- --config config/config.yaml
-
-### yolo V7 (anchor-based  一阶段算法)
-(原来的算法是anchor-free 也是一阶段算法)
-感受野（Receptive Field）anchor 3种
-
-迁移训练
-rop3d数据集转化为coco 数据集
-
-
-yolo 3d 与2d的关系
-然后还做了yolo 的2d到3d的转换，就改了head，修改了loss函数，还改了一下dataload那个函数，因为要回归到3d信息
-
